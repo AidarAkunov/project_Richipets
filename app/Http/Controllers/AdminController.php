@@ -10,12 +10,16 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    public function main() {
-        return view('admin.main.index');
+    public function category() {
+        return view('admin.category.index');
     }
 
     public function subcategory() {
         return view('admin.subcategory.index');
+    }
+
+    public function brand() {
+        return view('admin.brand.index');
     }
 
     public function product() {

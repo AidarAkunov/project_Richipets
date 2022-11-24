@@ -10,34 +10,34 @@
     <body>
         <nav class="navbar navbar-expand-sm justify-content-center" style="background-color: #a6a6a6">
             <div class="navbar-nav">
-                <span class="navbar-text h4 fw-bold">Редактирование подкатегорий</span><br>
+                <span class="navbar-text h4 fw-bold">Редактирование брендов</span><br>
             </div>
         </nav>
         <div class="container mt-3">
-            <a href="{{ route('admin.subcategory.create') }}">
-            <button type="button" class="btn btn-primary">Добавить подкатегорию</button></a><br><br>
+            <a href="{{ route('admin.brand.create') }}">
+            <button type="button" class="btn btn-primary">Добавить бренд</button></a><br><br>
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr class="text-center">
+                        <th>Бренды</th>
                         <th>Подкатегории</th>
-                        <th>Категории</th>
                         <th>Редактирование</th>
                         <th>Удаление</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($subcategory as $row)
+                    @foreach ($brand as $row)
                     <tr>
                         <td>{{ $row->name }}</td>
-                        <td>{{ $row->category_id }}</td>
-                        <td><a href="{{route('admin.subcategory.edit', $row->id) }}">Редактировать</td>
-                        <td><a href="{{ route('admin.subcategory.destroy', $row->id) }}">Удалить</td>
+                        <td>{{ $row->subcategory_id }}</td>
+                        <td><a href = "{{route('admin.brand.edit', $row->id) }}">Редактировать</td>
+                        <td><a href = "{{ route('admin.brand.destroy', $row->id) }}">Удалить</td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
             <a href="{{ route('admin.index') }}" class="nav-link px-0 align-middle">
-            <button type="button" class="btn btn-primary">Назад</button></a>
+            <button type="button"  class="btn btn-primary">Назад</button></a>
         </div>
     </body>
 </html>

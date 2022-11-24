@@ -4,50 +4,75 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet' href = '<?php echo asset('css/app.css') ?>'>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <title>Админ панель</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark px-5" style="background-color: #a6a6a6">
             <div class="container-fluid">
-                <a class="navbar-brand text-warning" href="<?php echo route('basic.index') ?>">Richipets</a>
+                <a class="navbar-brand text-dark" href="<?php echo route('basic.index') ?>">
+                <span class="navbar-text text-dark h4 fw-bold">Richipets</span></a>
             </div>
             <div class="container-fluid">
-                <span class="navbar-text">АДМИНИСТРАТИВНАЯ ПАНЕЛЬ</span>
+                <span class="navbar-text text-dark h4 fw-bold">АДМИНИСТРАТИВНАЯ ПАНЕЛЬ</span>
             </div>
         </nav>
+        
         <div class="container-fluid">
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #a6a6a6">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li>
-                                <a href="<?php echo route('admin.main.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Главная страница</span></a>
+                                <a href="<?php echo route('admin.category.index') ?>" class="nav-link px-0 align-middle">
+                                <button type="button"  class="btn btn-light table-striped">Категории</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.subcategory.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Страница подкатегорий</span></a>
+                                <button type="button"  class="btn btn-light">Подкатегории</button></a>
+                            </li>
+                            <li>
+                                <a href="<?php echo route('admin.brand.index') ?>" class="nav-link px-0 align-middle">
+                                <button type="button"  class="btn btn-light">Бренды</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.product.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Страница товаров</span></a>
+                                <button type="button"  class="btn btn-light">Товары</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.profile.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Страница профиля товара</span></a>
+                                <button type="button"  class="btn btn-light">Профиль товаров</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.service.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Страница вет.сервиса</span></a>
+                                <button type="button"  class="btn btn-light">Вет.сервисы</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.analysis.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Страница анализа</span></a>
+                                <button type="button"  class="btn btn-light">Страница анализа</button></a>
                             </li>
                             <li>
                                 <a href="<?php echo route('admin.allProduct.index') ?>" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Все товары</span></a>
+                                <button type="button"  class="btn btn-light">Все товары</button></a>
+                            </li>
+                            <li>
+                                    <div class="dropdown dropend">
+                                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
+                                        Главная страница
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Логотип</a></li>
+                                            <li><a class="dropdown-item" href="#">Слайдер</a></li>
+                                            <li><a class="dropdown-item" href="#">Социальные сети</a></li>
+                                            <li><a class="dropdown-item" href="#">Рекомендации</a></li>
+                                            <li><a class="dropdown-item" href="#">Акции и скидки</a></li>
+                                            <li><a class="dropdown-item" href="#">О нас</a></li>
+                                            <li><a class="dropdown-item" href="#">Местоположение магазина</a></li>
+                                            <li><a class="dropdown-item" href="#">График работы и телефон</a></li>
+                                        </ul>
+                                    </div>
                             </li>
                         </ul>
                         <hr>
