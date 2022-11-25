@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet' href = '<?php echo asset('css/app.css') ?>'>
+        <link rel='stylesheet' href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
         <title>Главная страница</title>
     </head>
@@ -12,7 +12,7 @@
 
 <!-- header -->
     <header class="text-center text-lg-start">
-        <nav class="navbar navbar-expand-sm navbar-light bg-secondary">
+        <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #a6a6a6">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                 <!-- <img src="" alt="" width="100" height="40" class="d-inline-block align-text-top"> -->
@@ -66,7 +66,7 @@
             </button>
         </div>
         <br>
-        <nav class="navbar navbar-expand-sm navbar-light sticky-top bg-secondary">
+        <nav class="navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #a6a6a6">
             <div class="container-fluid  justify-content-center sticky-top">
                 <ul class="navbar-nav fw-bold h5">
                     <li class="nav-item">
@@ -84,8 +84,9 @@
                 </ul>
             </div>
         </nav>
+        <br>
 <!-- Рекомендации -->
-        <center><h3><span class="badge text-dark  bg-secondary">Рекомендации</span></h3></center>
+        <center><h3><span class="badge text-dark" style="background-color: #a6a6a6">Рекомендации</span></h3></center>
         <br>
         <div class="container">
             <div class="row rowPizza" style="margin-bottom:50px">
@@ -95,7 +96,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Хот Папа</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Пепперони, Ароматная говядина, Халапеньо, Моцарелла</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">450 c</h5>
                         </div>
                     </div>
@@ -106,7 +107,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Спайси Веджи</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Томаты, Шампиньоны, Лук, Зеленый перец, Черные оливки, Моцарелла, Халапеньо</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">350 c</h5>
                         </div>
                     </div>
@@ -117,7 +118,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Супер Микс</h4><hr>
                             <p class="card-text">Четыре аппетитных пиццы в одной: Пепперони + Гавайская + Мексиканская + Супер Папа</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">845 c</h5>
                         </div>
                     </div>
@@ -128,7 +129,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Мексиканская</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Куриная грудка, Зеленый перец, Лук, Шампиньоны, Томаты, Халапеньо, Моцарелла</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">415 c</h5>
                         </div>
                     </div>
@@ -137,7 +138,7 @@
         </div>
 
 <!-- АКЦИИ-->
-        <center><h3><span class="badge text-dark bg-secondary">Акции и скидки</span></h3></center>
+        <center><h3><span class="badge text-dark">Акции и скидки</span></h3></center>
         <br>
         <div class="container">
             <div class="row rowPizza" style="margin-bottom:50px">
@@ -147,7 +148,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Хот Папа</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Пепперони, Ароматная говядина, Халапеньо, Моцарелла</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">450 c</h5>
                         </div>
                     </div>
@@ -158,7 +159,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Спайси Веджи</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Томаты, Шампиньоны, Лук, Зеленый перец, Черные оливки, Моцарелла, Халапеньо</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">350 c</h5>
                         </div>
                     </div>
@@ -169,7 +170,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Супер Микс</h4><hr>
                             <p class="card-text">Четыре аппетитных пиццы в одной: Пепперони + Гавайская + Мексиканская + Супер Папа</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">845 c</h5>
                         </div>
                     </div>
@@ -180,7 +181,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Мексиканская</h4><hr>
                             <p class="card-text">Фирменный томатный соус, Куриная грудка, Зеленый перец, Лук, Шампиньоны, Томаты, Халапеньо, Моцарелла</p>
-                            <a href="#" class="btn rounded-pill bg-secondary">В корзину</a>
+                            <a href="#" class="btn rounded-pill" style="background-color: #a6a6a6">В корзину</a>
                             <h5 class="text-secondary float-end card-price">415 c</h5>
                         </div>
                     </div>
@@ -189,13 +190,13 @@
         </div>
 
 <!-- footer-->
-        <footer class="text-center text-lg-start">
+        <footer class="text-center text-lg-start" style="background-color: #a6a6a6">
             <section class="d-flex justify-content-center justify-content-lg-between p-2 border-bottom">
-                <div class="container text-center text-md-start mt-auto h5  bg-secondary">
+                <div class="container text-center text-md-start mt-auto h5 ">
                     <div class="row mt-3">
                         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                             <a class="navbar-brand" href="#">
-                                ЛОГОТИП<img src="#" alt="" width="200" height="180" class="d-inline-block align-text-top  bg-secondary">
+                                ЛОГОТИП<img src="#" alt="" width="200" height="180" class="d-inline-block align-text-top ">
                             </a>
                         </div>
                         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
@@ -218,7 +219,7 @@
                     </div>
                 </div>
             </section>
-            <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.05);">
+            <div class="text-center p-2">
                 © 2022 Copyright:
                 <a class="text-reset fw-bold" href="#">Richipets.shop.kg</a>
             </div>

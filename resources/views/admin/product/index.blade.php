@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel='stylesheet' href="{{ asset('css/app.css') }}">
-        <title>Админ панель</title>
+        <title>Товары</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-sm justify-content-center" style="background-color: #a6a6a6">

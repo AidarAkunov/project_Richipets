@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel='stylesheet' href="{{ asset('css/app.css') }}">
-      <title>Document</title>
+      <title>Добавить подкатегорию</title>
   </head>
   <body>
     <form method='POST' action="{{ route('admin.subcategory.store')  }}">
@@ -21,7 +21,7 @@
               @endforeach
             </select>
       </div>
-      <input type='hidden' name='_token' value="{{ echo csrf_token(); }}">
+      <input type='hidden' name='_token' value="{{ csrf_token(); }}">
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>    
   </body>

@@ -37,10 +37,6 @@ class AdminController extends Controller
     public function analysis() {
         return view('admin.analysis.index');
     }
-
-    public function allProduct() {
-        return view('admin.allProduct.index');
-    }
 }
 
 

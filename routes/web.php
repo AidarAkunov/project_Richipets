@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\VetServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////// Get запросы вывести
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('basic/index', [BasicController::class, 'index'])->name('basic.index');
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/index', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin/category/index', [AdminController::class, 'category'])->name('admin.category.index');
 Route::get('admin/subcategory/index', [AdminController::class, 'subcategory'])->name('admin.subcategory.index');
@@ -32,10 +36,7 @@ Route::get('admin/product/index', [AdminController::class, 'product'])->name('ad
 Route::get('admin/profile/index', [AdminController::class, 'profile'])->name('admin.profile.index');
 Route::get('admin/service/index', [AdminController::class, 'service'])->name('admin.service.index');
 Route::get('admin/analysis/index', [AdminController::class, 'analysis'])->name('admin.analysis.index');
-Route::get('admin/allProduct/index', [AdminController::class, 'allProduct'])->name('admin.allProduct.index');
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Route::get('basic/index', [BasicController::class, 'index'])->name('basic.index');
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/category/index', [CategoryController::class, 'index'])->name('admin.category.index');
 Route::get('admin/category/create', [CategoryController::class, 'create'])->name('admin.category.create');
 Route::post('admin/category/create', [CategoryController::class, 'store'])->name('admin.category.store');
@@ -63,3 +64,10 @@ Route::post('admin/product/create', [ProductController::class, 'store'])->name('
 Route::get('admin/product/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
 Route::post('admin/product/update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
 Route::get('admin/product/destroy/{id}', [ProductController::class, 'destroy'])->name('admin.product.destroy');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/vetservice/index', [VetServiceController::class, 'index'])->name('admin.vetservice.index');
+Route::get('admin/vetservice/create', [VetServiceController::class, 'create'])->name('admin.vetservice.create');
+Route::post('admin/vetservice/create', [VetServiceController::class, 'store'])->name('admin.vetservice.store');
+Route::get('admin/vetservice/edit/{id}', [VetServiceController::class, 'edit'])->name('admin.vetservice.edit');
+Route::post('admin/vetservice/update/{id}', [VetServiceController::class, 'update'])->name('admin.vetservice.update');
+Route::get('admin/vetservice/destroy/{id}', [VetServiceController::class, 'destroy'])->name('admin.vetservice.destroy');
