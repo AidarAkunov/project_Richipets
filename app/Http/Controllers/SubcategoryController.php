@@ -8,8 +8,13 @@ use App\Models\Subcategory;
 
 class SubcategoryController extends Controller{
 
-    public function index() {
-        $subcategory = Subcategory::all();
+    public function index($id = null) {
+        if ($id) {
+            $subcategory = Subcategory::where('category_id',$id)->get();
+        } else {
+            $subcategory = Subcategory::all();
+        }
+
         return view('admin.subcategory.index', compact('subcategory'));
     }
 

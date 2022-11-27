@@ -28,10 +28,10 @@
                 <tbody>
                     @foreach ($brand as $row)
                     <tr>
-                        <td>{{ $row->name }}</td>
+                        <td><a href = "{{ route('admin.product.index', $row->id) }}">{{ $row->name }}</a></td>
                         <td>{{ $row->subcategory_id }}</td>
-                        <td><a href = "{{route('admin.brand.edit', $row->id) }}">Редактировать</td>
-                        <td><a href = "{{ route('admin.brand.destroy', $row->id) }}">Удалить</td>
+                        <td><a href = "{{ route('admin.brand.edit', $row->id) }}">Редактировать</a></td>
+                        <td><a href = "{{ route('admin.brand.destroy', $row->id) }}">Удалить</a></td>
                     </tr>
                     @endforeach
                 </tbody>

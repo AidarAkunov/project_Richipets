@@ -16,7 +16,7 @@ class AddColumnBrandIdToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->index('brand_id', 'product_brand_idx');
-            $table->foreign('brand_id', 'product_brand_fk')->on('brands')->references('id');
+            $table->foreign('brand_id', 'product_brand_fk')->on('brands')->references('id')->onDelete('set null');
         });
     }
 

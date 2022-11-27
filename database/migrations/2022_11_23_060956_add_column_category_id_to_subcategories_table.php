@@ -16,7 +16,7 @@ class AddColumnCategoryIdToSubcategoriesTable extends Migration
         Schema::table('subcategories', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->nullable();
             $table->index('category_id', 'subcategory_category_idx');
-            $table->foreign('category_id', 'subcategory_category_fk')->on('categories')->references('id');
+            $table->foreign('category_id', 'subcategory_category_fk')->on('categories')->references('id')->onDelete('set null');
         });
     }
 

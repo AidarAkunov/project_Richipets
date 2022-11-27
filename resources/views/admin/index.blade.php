@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
         <title>Админ панель</title>
     </head>
     <body>
@@ -42,16 +41,8 @@
                                 <button type="button" class="btn btn-light">Товары</button></a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.profile.index') }}" class="nav-link px-0 align-middle">
-                                <button type="button" class="btn btn-light">Профиль товаров</button></a>
-                            </li>
-                            <li>
                                 <a href="{{ route('admin.vetservice.index') }}" class="nav-link px-0 align-middle">
                                 <button type="button" class="btn btn-light">Вет.сервисы</button></a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.analysis.index') }}" class="nav-link px-0 align-middle">
-                                <button type="button" class="btn btn-light">Страница анализа</button></a>
                             </li>
                             <li>
                                 <div class="dropdown dropend">
@@ -59,14 +50,9 @@
                                     Главная страница
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Логотип</a></li>
                                         <li><a class="dropdown-item" href="#">Слайдер</a></li>
-                                        <li><a class="dropdown-item" href="#">Социальные сети</a></li>
                                         <li><a class="dropdown-item" href="#">Рекомендации</a></li>
                                         <li><a class="dropdown-item" href="#">Акции и скидки</a></li>
-                                        <li><a class="dropdown-item" href="#">О нас</a></li>
-                                        <li><a class="dropdown-item" href="#">Местоположение магазина</a></li>
-                                        <li><a class="dropdown-item" href="#">График работы и телефон</a></li>
                                     </ul>
                                 </div>
                             </li>

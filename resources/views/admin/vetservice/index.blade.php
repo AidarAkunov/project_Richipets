@@ -36,7 +36,7 @@
                         <td>{{ $row->phone }}</td>
                         <td>{{ $row->link }}</td>
                         <td>{{ $row->subcategory_id }}</td>
-                        <td><a href = "{{route('admin.vetservice.edit', $row->id) }}">Редактировать</td>
+                        <td><a href = "{{ route('admin.vetservice.edit', $row->id) }}">Редактировать</td>
                         <td><a href = "{{ route('admin.vetservice.destroy', $row->id) }}">Удалить</td>
                     </tr>
                     @endforeach

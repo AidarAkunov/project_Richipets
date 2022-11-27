@@ -27,9 +27,9 @@
                 <tbody>
                     @foreach ($category as $row)
                     <tr>
-                        <td>{{ $row->name }}</td>
-                        <td><a href = "{{ route('admin.category.edit', $row->id) }}">Изменить</td>
-                        <td><a href = "{{ route('admin.category.destroy', $row->id) }}">Удалить</td>
+                        <td><a href="{{ route('admin.subcategory.index', $row->id) }}">{{ $row->name }}</a></td>
+                        <td><a href="{{ route('admin.category.edit', $row->id) }}">Изменить</a></td>
+                        <td><a href="{{ route('admin.category.destroy', $row->id) }}">Удалить</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -28,10 +28,10 @@
                 <tbody>
                     @foreach ($subcategory as $row)
                     <tr>
-                        <td>{{ $row->name }}</td>
+                        <td><a href="{{ route('admin.brand.index', $row->id) }}">{{ $row->name }}</a></td>
                         <td>{{ $row->category_id }}</td>
-                        <td><a href="{{route('admin.subcategory.edit', $row->id) }}">Редактировать</td>
-                        <td><a href="{{ route('admin.subcategory.destroy', $row->id) }}">Удалить</td>
+                        <td><a href="{{ route('admin.subcategory.edit', $row->id) }}">Редактировать</a></td>
+                        <td><a href="{{ route('admin.subcategory.destroy', $row->id) }}">Удалить</a></td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -8,8 +8,12 @@ use App\Models\Brand;
 
 class BrandController extends Controller{
 
-    public function index() {
-        $brand = Brand::all();
+    public function index($id = null) {
+        if ($id) {
+            $brand = Brand::where('subcategory_id',$id)->get();
+        } else {
+            $brand = Brand::all();
+        }
         return view('admin.brand.index', compact('brand'));
     }
 

@@ -16,7 +16,7 @@ class AddColumnSubcategoryIdToVetServicesTable extends Migration
         Schema::table('vet_services', function (Blueprint $table) {
             $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->index('subcategory_id', 'vet_service_subcategory_idx');
-            $table->foreign('subcategory_id', 'vet_service_subcategory_fk')->on('subcategories')->references('id');
+            $table->foreign('subcategory_id', 'vet_service_subcategory_fk')->on('subcategories')->references('id')->onDelete('set null');;
         });
     }
 

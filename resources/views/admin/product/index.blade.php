@@ -34,8 +34,8 @@
                         <td>{{ $row->price }}</td>
                         <td>{{ $row->count }}</td>
                         <td>{{ $row->brand_id }}</td>
-                        <td><a href = "{{ route('admin.product.edit', $row->id) }}">Редактировать</td>
-                        <td><a href = "{{ route('admin.product.destroy', $row->id) }}">Удалить</td>
+                        <td><a href = "{{ route('admin.product.edit', $row->id) }}">Редактировать</a></td>
+                        <td><a href = "{{ route('admin.product.destroy', $row->id) }}">Удалить</a></td>
                     </tr>
                     @endforeach
                 </tbody>

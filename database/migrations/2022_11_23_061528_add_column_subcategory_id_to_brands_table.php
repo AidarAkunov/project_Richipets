@@ -16,7 +16,7 @@ class AddColumnSubcategoryIdToBrandsTable extends Migration
         Schema::table('brands', function (Blueprint $table) {
             $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->index('subcategory_id', 'brand_subcategory_idx');
-            $table->foreign('subcategory_id', 'brand_subcategory_fk')->on('subcategories')->references('id');
+            $table->foreign('subcategory_id', 'brand_subcategory_fk')->on('subcategories')->references('id')->onDelete('set null');
         });
     }
 

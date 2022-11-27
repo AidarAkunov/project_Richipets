@@ -10,7 +10,7 @@
   <body>
     <form method='POST' action="{{ route('admin.brand.update', $brand->id) }}">
       <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
+        <label for="name">Name</label>
         <input type="text" class="form-control" value ="{{ $brand->name }}" name='name' id="name" aria-describedby="name">
       </div>
       <input type='hidden' name='subcategory_id' value="{{ $brand->subcategory_id }}">
