@@ -16,7 +16,7 @@ class AddColumnPropertyIdToPropertyValuesTable extends Migration
         Schema::table('property_values', function (Blueprint $table) {
             $table->unsignedBigInteger('property_id')->nullable();
             $table->index('property_id', 'property_values_property_idx');
-            $table->foreign('property_id', 'property_values_property_fk')->on('properties')->references('id')->onDelete('set null');;
+            $table->foreign('property_id', 'property_values_property_fk')->on('properties')->references('id')->onDelete('set null');
         });
     }
 

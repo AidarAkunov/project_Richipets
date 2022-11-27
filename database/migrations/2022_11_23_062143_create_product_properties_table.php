@@ -21,8 +21,8 @@ class CreateProductPropertiesTable extends Migration
             $table->index('product_id', 'product_properties_product_idx');
             $table->index('property_id', 'product_properties_property_idx');
 
-            $table->foreign('product_id', 'product_properties_product_fk')->on('products')->references('id')->onDelete('cascade');;
-            $table->foreign('property_id', 'product_properties_property_fk')->on('properties')->references('id')->onDelete('cascade');;
+            $table->foreign('product_id', 'product_properties_product_fk')->on('products')->references('id')->onDelete('cascade');
+            $table->foreign('property_id', 'product_properties_property_fk')->on('properties')->references('id')->onDelete('cascade');
 
             $table->timestamps();
         });
