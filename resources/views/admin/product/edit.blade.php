@@ -21,9 +21,16 @@
         <label for="count">Количество</label>
         <input type="text" class="form-control" value="{{ $product->count }}" name='count' id="count" aria-describedby="count">
       </div>
-      <input type='hidden' name='brand_id' value="{{ $product->brand_id }}">
-        <input type='hidden' name='_token' value="{{ csrf_token(); }}">
+        <div class="mb-3">
+            <label for="brand_id" class="form-label">Выберите бренд:</label>
+            <select name="brand_id">
+                @foreach ($brand as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <input type='hidden' name='_token' value="{{ csrf_token() }}">
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>    
+    </form>
   </body>
 </html>

@@ -13,9 +13,16 @@
         <label for="name">Name</label>
         <input type="text" class="form-control" value ="{{ $brand->name }}" name='name' id="name" aria-describedby="name">
       </div>
-      <input type='hidden' name='subcategory_id' value="{{ $brand->subcategory_id }}">
-        <input type='hidden' name='_token' value="{{ csrf_token(); }}">
+        <div class="mb-3">
+            <label for="subcategory_id" class="form-label">Выберите подкатегорию:</label>
+            <select name="subcategory_id">
+                @foreach ($subcategory as $row)
+                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <input type='hidden' name='_token' value="{{ csrf_token() }}">
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>    
+    </form>
   </body>
 </html>

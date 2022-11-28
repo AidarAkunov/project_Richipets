@@ -11,10 +11,13 @@
     <form method='POST' action="{{ route('admin.category.store') }}">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" name='name' id="name" aria-describedby="name" placeholder="Enter name">
+        <input type="text" value="{{ old('name') }}" class="form-control" name='name' id="name" aria-describedby="name" placeholder="Enter name">
+          @error('name')
+          <p class="text-danger">{{ $message }}</p>
+          @enderror
       </div>
-        <input type='hidden' name='_token' value ="{{ csrf_token(); }}">
+        <input type='hidden' name='_token' value ="{{ csrf_token() }}">
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>    
+    </form>
   </body>
 </html>

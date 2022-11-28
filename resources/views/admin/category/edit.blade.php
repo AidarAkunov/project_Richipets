@@ -13,8 +13,8 @@
     <label for="name">Name</label>
     <input type="text" class="form-control" value="{{ $category->name }}" name='name' id="name" aria-describedby="name">
   </div>
-    <input type='hidden' name='_token' value= "{{ csrf_token(); }}">
+    <input type='hidden' name='_token' value= "{{ csrf_token() }}">
   <button type="submit" class="btn btn-primary">Submit</button>
-</form>    
+</form>
 </body>
 </html>

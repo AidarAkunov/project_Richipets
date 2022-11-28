@@ -9,7 +9,7 @@ use App\Models\Brand;
 class BrandController extends Controller{
 
     public function index($id = null) {
-        if ($id) {
+        if (isset($id)) {
             $brand = Brand::where('subcategory_id',$id)->get();
         } else {
             $brand = Brand::all();
@@ -26,14 +26,15 @@ class BrandController extends Controller{
         $data = $request->validate([
             'name' => 'required|string',
             'subcategory_id' => 'required|integer'
-        ]); 
+        ]);
         Brand::create($data);
         return redirect(route('admin.brand.index'));
     }
 
     public function edit($id) {
+        $subcategory = Subcategory::all();
         $brand = Brand::find($id);
-        return view('admin.brand.edit', compact('brand','id'));
+        return view('admin.brand.edit', compact('brand','subcategory'));
     }
 
     public function update(Request $request, $id) {

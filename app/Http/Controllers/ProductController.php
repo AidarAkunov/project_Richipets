@@ -8,8 +8,12 @@ use App\Models\Product;
 
 class ProductController extends Controller{
 
-    public function index() {
-        $product = Product::all();
+    public function index($id = null) {
+        if (isset($id)) {
+            $product = Product::where('brand_id',$id)->get();
+        } else {
+            $product = Product::all();
+        }
         return view('admin.product.index', compact('product'));
     }
 
@@ -24,14 +28,15 @@ class ProductController extends Controller{
             'price' => 'required|integer',
             'count' => 'required|integer',
             'brand_id' => 'required|integer'
-        ]); 
+        ]);
         Product::create($data);
         return redirect(route('admin.product.index'));
     }
 
     public function edit($id) {
+        $brand = Brand::all();
         $product = Product::find($id);
-        return view('admin.product.edit', compact('product','id'));
+        return view('admin.product.edit', compact('product','brand'));
     }
 
     public function update(Request $request, $id) {

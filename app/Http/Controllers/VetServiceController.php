@@ -25,14 +25,15 @@ class VetServiceController extends Controller{
             'phone' => 'required|string',
             'link' => 'required|string',
             'subcategory_id' => 'required|integer'
-        ]); 
+        ]);
         VetService::create($data);
         return redirect(route('admin.vetservice.index'));
     }
 
     public function edit($id) {
+        $subcategory = Subcategory::all();
         $vetservice = VetService::find($id);
-        return view('admin.vetservice.edit', compact('vetservice','id'));
+        return view('admin.vetservice.edit', compact('vetservice','subcategory'));
     }
 
     public function update(Request $request, $id) {

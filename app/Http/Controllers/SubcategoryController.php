@@ -9,7 +9,7 @@ use App\Models\Subcategory;
 class SubcategoryController extends Controller{
 
     public function index($id = null) {
-        if ($id) {
+        if (isset($id)) {
             $subcategory = Subcategory::where('category_id',$id)->get();
         } else {
             $subcategory = Subcategory::all();
@@ -27,14 +27,15 @@ class SubcategoryController extends Controller{
         $data = $request->validate([
             'name' => 'required|string',
             'category_id' => 'required|integer'
-        ]); 
+        ]);
         Subcategory::create($data);
         return redirect(route('admin.subcategory.index'));
     }
 
     public function edit($id) {
+        $category = Category::all();
         $subcategory = Subcategory::find($id);
-        return view('admin.subcategory.edit', compact('subcategory','id'));
+        return view('admin.subcategory.edit', compact('subcategory','category'));
     }
 
     public function update(Request $request, $id) {

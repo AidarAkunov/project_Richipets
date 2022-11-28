@@ -1,43 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel='stylesheet' href="{{ asset('css/app.css') }}">
-        <title>Подкатегории</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-sm justify-content-center" style="background-color: #a6a6a6">
-            <div class="navbar-nav">
-                <span class="navbar-text h4 fw-bold">Редактирование подкатегорий</span><br>
-            </div>
-        </nav>
-        <div class="container mt-3">
-            <a href="{{ route('admin.subcategory.create') }}">
+@extends('admin.layout')
+
+@section('title')
+    Подкатегории
+@endsection
+@section('content')
+    <div class="container mt-3 col-10">
+        <a href="{{ route('admin.subcategory.create') }}">
             <button type="button" class="btn btn-primary">Добавить подкатегорию</button></a><br><br>
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr class="text-center">
-                        <th>Подкатегории</th>
-                        <th>Категории</th>
-                        <th>Редактирование</th>
-                        <th>Удаление</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($subcategory as $row)
-                    <tr>
-                        <td><a href="{{ route('admin.brand.index', $row->id) }}">{{ $row->name }}</a></td>
-                        <td>{{ $row->category_id }}</td>
-                        <td><a href="{{ route('admin.subcategory.edit', $row->id) }}">Редактировать</a></td>
-                        <td><a href="{{ route('admin.subcategory.destroy', $row->id) }}">Удалить</a></td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <a href="{{ route('admin.index') }}" class="nav-link px-0 align-middle">
-            <button type="button" class="btn btn-primary">Назад</button></a>
-        </div>
-    </body>
-</html>
+        <a href="{{ route('admin.index') }}" class="nav-link px-0 align-middle">
+            <button type="button" class="btn btn-primary">На главную</button></a>
+        <table class="table table-bordered table-striped">
+            <div class="h4 text-center">
+                <p class="fw-bold">Подкатегории</p>
+            </div>
+            <thead>
+            <tr class="text-center">
+                <th>Подкатегории</th>
+                <th>Категории</th>
+                <th>Редактирование</th>
+                <th>Удаление</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach ($subcategory as $row)
+                <tr>
+                    <td><a href="{{ route('admin.brand.index', $row->id) }}">{{ $row->name }}</a></td>
+                    <td>{{ $row->category_id }}</td>
+                    <td><a href="{{ route('admin.subcategory.edit', $row->id) }}">Редактировать</a></td>
+                    <td><a href="{{ route('admin.subcategory.destroy', $row->id) }}">Удалить</a></td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
