@@ -19,8 +19,8 @@ class Subcategory extends Model
         return $this->hasMany(Brand::class,'subcategory_id','id');
     }
 
-    public function service() {
-        return $this->hasMany(Service::class,'subcategory_id','id');
+    public function vetservice() {
+        return $this->hasMany(VetService::class,'subcategory_id','id');
     }
 
 }

@@ -1,45 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel='stylesheet' href="{{ asset('css/app.css') }}">
-      <title>Добавить товар</title>
-  </head>
-  <body>
-    <form method='POST' action ="{{ route('admin.product.store') }}">
-      <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" value="{{ old('name') }}" class="form-control" name='name' id="name" aria-describedby="name" placeholder="Enter name">
-          @error('name')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
+@extends('admin.layout')
+
+@section('title')
+  Добавление товара
+@endsection
+
+@section('content')
+<div class="content-wrapper">
+<section class="content">
+    <div class="container-fluid mt-5">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title fw-bold">Добавить товар</h3>
+        </div>
+        <form method='POST' action="{{ route('admin.product.store') }}">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="Name">Название</label>
+              <input type="text" value="{{ old('name') }}" class="form-control" name='name' id="name" placeholder="Введите название товара">
+                @error('name')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+              <label for="price">Цена</label>
+              <input type="text" value="{{ old('price') }}" class="form-control" name='price' id="price" placeholder="Введите цену">
+                @error('price')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+              <label for="count">Количество</label>
+              <input type="text" value="{{ old('count') }}" class="form-control" name='count' id="count" placeholder="Введите количество">
+                @error('count')
+                  <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="form-group">
+              <label for="brand_id">Выберите бренд:</label>
+              <select class="form-control" name="brand_id">
+                @foreach ($brand as $row)
+                  <option value="{{ $row->id }}">{{ $row->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group">
+              <input type="hidden" value ="{{ csrf_token() }}" name='_token' class="form-control" id="_token">
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
       </div>
-      <div class="mb-3">
-        <label for="price" class="form-label">Цена</label>
-        <input type="text" value="{{ old('price') }}" class="form-control" name='price' id="price" aria-describedby="price" placeholder="Enter price">
-          @error('price')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
-      </div>
-      <div class="mb-3">
-        <label for="count" class="form-label">Количество</label>
-        <input type="text" value="{{ old('count') }}" class="form-control" name='count' id="count" aria-describedby="count" placeholder="Enter count">
-          @error('count')
-          <p class="text-danger">{{ $message }}</p>
-          @enderror
-      </div>
-      <div class="mb-3">
-        <label for="brand_id" class="form-label">Выберите бренд:</label>
-            <select name="brand_id">
-              @foreach ($brand as $row)
-                <option value="{{ $row->id }}">{{ $row->name }}</option>
-              @endforeach
-            </select>
-      </div>
-      <input type='hidden' name='_token' value="{{ csrf_token() }}">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </body>
-</html>
+    </div>
+  </section>
+</div>
+@endsection

@@ -1,35 +1,54 @@
 @extends('admin.layout')
+
 @section('title')
     Бренды
 @endsection
+
 @section('content')
-    <div class="container mt-3 col-10">
-        <a href="{{ route('admin.brand.create') }}">
-            <button type="button" class="btn btn-primary">Добавить бренд</button></a><br><br>
-        <a href="{{ route('admin.index') }}" class="nav-link px-0 align-middle">
-            <button type="button"  class="btn btn-primary">На главную</button></a>
-        <table class="table table-bordered table-striped">
-            <div class="h4 text-center">
-                <p class="fw-bold">Бренды</p>
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1 class="m-0 fw-bold text-center">Бренды</h1>
+                </div>
             </div>
-            <thead>
-            <tr class="text-center">
-                <th>Бренды</th>
-                <th>Подкатегории</th>
-                <th>Редактирование</th>
-                <th>Удаление</th>
-            </tr>
-            </thead>
-            <tbody>
-            @foreach ($brand as $row)
-                <tr>
-                    <td><a href = "{{ route('admin.product.index', $row->id) }}">{{ $row->name }}</a></td>
-                    <td>{{ $row->subcategory_id }}</td>
-                    <td><a href = "{{ route('admin.brand.edit', $row->id) }}">Редактировать</a></td>
-                    <td><a href = "{{ route('admin.brand.destroy', $row->id) }}">Удалить</a></td>
-                </tr>
-            @endforeach
-            </tbody>
-        </table>
+        </div>
     </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <a href="{{ route('admin.index') }}">
+                        <button type="button"  class="btn btn-primary m-0 text-center">На главную</button>
+                    </a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{ route('admin.brand.create') }}">
+                        <button type="button" class="btn btn-primary float-sm-right">Добавить бренд</button>
+                    </a>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th>Название</th>
+                        <th>Подкатегория</th>
+                        <th colspan="2" class="text-center">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($brand as $row)
+                        <tr>
+                            <td><a href = "{{ route('admin.product.index', $row->id) }}">{{ $row->name }}</a></td>
+                            <td>{{ $row->subcategory_id }}</td>
+                            <td><a href = "{{ route('admin.brand.edit', $row->id) }}">Редактировать</a></td>
+                            <td><a href = "{{ route('admin.brand.destroy', $row->id) }}">Удалить</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
 @endsection
