@@ -33,7 +33,7 @@
                 <thead>
                     <tr class="text-center">
                         <th>Название</th>
-                        <th>Путь</th>
+                        <th>Файл</th>
                         <th colspan="2" class="text-center">Действия</th>
                     </tr>
                 </thead>
@@ -41,7 +41,11 @@
                     @foreach ($slider as $row)
                         <tr>
                             <td>{{ $row->name }}</td>
-                            <td>{{ $row->link }}</td>
+                            <td>
+                                <div class="text-center h-25 w-25">
+                                    <img src="{{ asset('storage/' . $row->link) }}" class="rounded w-50 h-50" alt="link">
+                                </div>
+                            </td>
                             <td><a href="{{ route('admin.slider.edit', $row->id) }}">Изменить</a></td>
                             <td><a href="{{ route('admin.slider.destroy', $row->id) }}">Удалить</a></td>
                         </tr>

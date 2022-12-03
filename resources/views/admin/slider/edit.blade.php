@@ -18,14 +18,20 @@
                   <label for="Name">Название</label>
                   <input type="text" value="{{ $slider->name }}" class="form-control" name='name' id="name">
                   @error('name')
-                  <p class="text-danger">{{ $message }}</p>
+                  <p class="text-danger">Это поле необходимо заполнить</p>
                   @enderror
               </div>
             <div class="form-group">
-              <label for="link">Путь</label>
-              <input type="file" value="{{ $slider->link }}" class="form-control" name='link' id="link">
+              <label for="link">Файл</label>
+                <div class="text-center w-25 mb-4">
+                    <img src="{{ asset('storage/' . $slider->link) }}" class="rounded w-50 h-50" alt="link">
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name='link' id="link">
+                    <label class="custom-file-label">Выберите изображение</label>
+                </div>
                 @error('link')
-                  <p class="text-danger">{{ $message }}</p>
+                <p class="text-danger">Это поле необходимо заполнить</p>
                 @enderror
             </div>
             <div class="form-group">

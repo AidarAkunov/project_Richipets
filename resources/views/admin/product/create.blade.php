@@ -21,6 +21,13 @@
                   <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+              <div class="form-group">
+                  <label for="original_cost">Себестоимость</label>
+                  <input type="text" value="{{ old('original_cost') }}" class="form-control" name='original_cost' id="original_cost" placeholder="Введите себестоимость">
+                  @error('original_cost')
+                  <p class="text-danger">{{ $message }}</p>
+                  @enderror
+              </div>
             <div class="form-group">
               <label for="price">Цена</label>
               <input type="text" value="{{ old('price') }}" class="form-control" name='price' id="price" placeholder="Введите цену">

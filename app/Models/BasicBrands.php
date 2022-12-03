@@ -24,7 +24,7 @@ class BasicBrands extends Model
     public static function getBasicNames() {
         return [
             self::TYPE_BRAND => 'Создать темплейт для бренда',
-            self::TYPE_ONE => 'one.blade.php',
+            self::TYPE_ONE => 'Создать темплейт для одного товара',
             self::TYPE_CUSTOM => 'custom.blade.php'
         ];
     }

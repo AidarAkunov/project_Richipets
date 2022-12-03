@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Admin\ProductFilterController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -7,7 +7,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\VetServiceController;
 use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Basic\BasicController;
+use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Basic\BasicBrandsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,10 +28,11 @@ Route::get('/', function () {
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Route::get('basic/index', [BasicController::class, 'index'])->name('basic.index');
+Route::get('basic/index', [BasicBrandsController::class, 'index'])->name('basic.index');
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/index', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin/index', [AdminController::class, 'show'])->name('admin.index');
+Route::get('admin/product/index', [ProductFilterController::class, 'index'])->name('admin.product.index');
 // Route::get('admin/category/index', [AdminController::class, 'category'])->name('admin.category.index');
 // Route::get('admin/subcategory/index', [AdminController::class, 'subcategory'])->name('admin.subcategory.index');
 // Route::get('admin/brand/index', [AdminController::class, 'brand'])->name('admin.brand.index');
@@ -89,3 +91,11 @@ Route::post('admin/slider/create', [SliderController::class, 'store'])->name('ad
 Route::get('admin/slider/edit/{id}', [SliderController::class, 'edit'])->name('admin.slider.edit');
 Route::post('admin/slider/update/{id}', [SliderController::class, 'update'])->name('admin.slider.update');
 Route::get('admin/slider/destroy/{id}', [SliderController::class, 'destroy'])->name('admin.slider.destroy');
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/image/index/{id?}', [ImageController::class, 'index'])->name('admin.image.index');
+Route::get('admin/image/create', [ImageController::class, 'create'])->name('admin.image.create');
+Route::post('admin/image/create', [ImageController::class, 'store'])->name('admin.image.store');
+Route::get('admin/image/edit/{id}', [ImageController::class, 'edit'])->name('admin.image.edit');
+Route::post('admin/image/update/{id}', [ImageController::class, 'update'])->name('admin.image.update');
+Route::get('admin/image/destroy/{id}', [ImageController::class, 'destroy'])->name('admin.image.destroy');

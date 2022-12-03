@@ -2,6 +2,7 @@
     use App\Models\BasicBrands;
     use App\Models\Brand;
     use App\Models\Product;
+    use App\Models\Image;
 ?>
 <!DOCTYPE html>
 <html lang="en">

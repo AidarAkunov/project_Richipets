@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BasicBrands;
 
 
-class BasicController extends Controller
+class BasicBrandsController extends Controller
 {
 
     public function index() {

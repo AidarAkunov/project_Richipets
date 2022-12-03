@@ -25,7 +25,7 @@
               <label for="subcategory_id">Выберите подкатегорию:</label>
               <select class="form-control" name="subcategory_id">
                 @foreach ($subcategory as $row)
-                  <option value="{{ $row->id }}">{{ $row->name }}</option>
+                  <option value="{{ $row->id }}" @if($row->id == $brand->subcategory_id){{ 'selected' }} @endif >{{ $row->name }}</option>
                 @endforeach
               </select>
             </div>

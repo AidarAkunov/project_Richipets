@@ -18,7 +18,7 @@
                   <label for="Name">Название</label>
                   <input type="text" value="{{ old('name') }}" class="form-control" name='name' id="name" placeholder="Введите название слайда">
                   @error('name')
-                  <p class="text-danger">{{ $message }}</p>
+                  <p class="text-danger">Это поле необходимо заполнить</p>
                   @enderror
               </div>
               <div class="form-group">
@@ -28,10 +28,10 @@
                           <input type="file" class="custom-file-input" name='link' id="link">
                           <label class="custom-file-label">Выберите изображение</label>
                       </div>
-                      <div class="input-group-append">
-                          <span class="input-group-text">Загрузка</span>
-                      </div>
                   </div>
+                  @error('link')
+                  <p class="text-danger">Это поле необходимо заполнить</p>
+                  @enderror
               </div>
             <div class="form-group">
               <input type="hidden" value ="{{ csrf_token() }}" name='_token' class="form-control" id="_token">

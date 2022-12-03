@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('title')
-Изменение товара
+    Изменение товара
 @endsection
 
 @section('content')
@@ -21,6 +21,13 @@
                   <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
+              <div class="form-group">
+                  <label for="original_cost">Себестоимость</label>
+                  <input type="text" value="{{ $product->original_cost }}" class="form-control" name='original_cost' id="original_cost">
+                  @error('original_cost')
+                  <p class="text-danger">{{ $message }}</p>
+                  @enderror
+              </div>
             <div class="form-group">
               <label for="price">Цена</label>
               <input type="text" value="{{ $product->price }}" class="form-control" name='price' id="price">
@@ -39,7 +46,7 @@
               <label for="brand_id">Выберите бренд:</label>
               <select class="form-control" name="brand_id">
                 @foreach ($brand as $row)
-                  <option value="{{ $row->id }}">{{ $row->name }}</option>
+                    <option value="{{ $row->id }}" @if($row->id == $product->brand_id){{ 'selected' }} @endif >{{ $row->name }}</option>
                 @endforeach
               </select>
             </div>
