@@ -34,6 +34,7 @@
                     <tr class="text-center">
                         <th>Изображение</th>
                         <th>Продукт</th>
+                        <th>Дата</th>
                         <th colspan="2" class="text-center">Действия</th>
                     </tr>
                 </thead>
@@ -46,6 +47,7 @@
                                 </div>
                             </td>
                             <td>{{ $row->product_id }}</td>
+                            <td>{{ $row->created_at->format('Дата: d.m.y, Время: H:m:s')}}</td>
                             <td><a href = "{{ route('admin.image.edit', $row->id) }}">Изменить</a></td>
                             <td><a href = "{{ route('admin.image.destroy', $row->id) }}">Удалить</a></td>
                         </tr>
