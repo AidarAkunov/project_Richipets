@@ -60,7 +60,7 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="subcategory_id">Выберите бренд:</label>
+                                <label for="subcategory_id">Выберите подкатегорию</label>
                                 <select class="form-control" name="subcategory_id">
                                     @foreach ($subcategory as $row)
                                         <option value="{{ $row->id }}" @if($row->id == $product->subcategory_id)

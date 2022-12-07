@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+        <link rel='stylesheet' href ="{{ asset('css/app.css') }}">
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
@@ -30,7 +31,7 @@
                             <div class="container-fluid">
                                 <form action="{{ route('admin.product.index') }}">
                                     <div class="input-group">
-                                        <input name="search_field" type="search_field" class="form-control form-control-md" placeholder="Поиск товара">
+                                        <input name="search_field" type="text" class="form-control form-control-md" placeholder="Поиск товара">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-md btn-default">
                                                 <i class="fa fa-search"></i>
@@ -41,6 +42,12 @@
                             </div>
                         </li>
                         <br>
+                        <li class="nav-item">
+                            <a href="{{ route('basic.main.index') }}" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>Перейти на сайт</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.main.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-home"></i>

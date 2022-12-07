@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>@yield('title')</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
 
         <link rel='stylesheet' href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/linearicons.css') }}">
@@ -20,6 +21,7 @@
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/51/2/intl/ru_ALL/common.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.googleapis.com/maps-api-v3/api/js/51/2/intl/ru_ALL/util.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     </head>
     <body>
 

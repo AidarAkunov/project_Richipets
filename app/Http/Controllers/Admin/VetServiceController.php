@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class VetServiceController extends Controller{
 
     public function index() {
-        $vetservice = VetService::all();
+        $vetservice = VetService::paginate(8);
         return view('admin.vetservice.index', compact('vetservice'));
     }
 

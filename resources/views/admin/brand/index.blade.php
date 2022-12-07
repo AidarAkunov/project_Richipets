@@ -50,5 +50,6 @@
                 </table>
             </div>
         </section>
+        {{ $brand->links() }}
     </div>
 @endsection

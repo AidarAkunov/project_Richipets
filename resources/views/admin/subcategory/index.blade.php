@@ -56,5 +56,6 @@
                 </table>
             </div>
         </section>
+        {{ $subcategory->links() }}
     </div>
 @endsection

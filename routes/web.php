@@ -1,5 +1,5 @@
 <?php
-use App\Http\Controllers\Admin\ProductFilterController;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -8,11 +8,14 @@ use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\VetServiceController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\ProductFilterController;
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\Basic\ProductAllController;
 use App\Http\Controllers\Basic\ProductOneController;
 use App\Http\Controllers\Basic\MainController;
 use App\Http\Controllers\Basic\SubcategoryViewController;
+use App\Http\Controllers\Basic\ProductFilterMainController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -106,3 +109,6 @@ Route::get('basic/productAll/index/{id?}', [ProductAllController::class, 'index'
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('basic/productOne/index', [ProductOneController::class, 'index'])->name('basic.productOne.index');
+
+Route::get('basic/productAll/index/{id?}', [ProductFilterMainController::class, 'index'])->name('basic.productAll.index');
+Route::post('ajaxRequest', [AjaxController::class, 'filter'])->name('ajaxRequest.post');

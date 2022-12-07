@@ -12,9 +12,9 @@ class SubcategoryController extends Controller{
 
     public function index($id = null) {
         if (isset($id)) {
-            $subcategory = Subcategory::where('category_id',$id)->get();
+            $subcategory = Subcategory::where('category_id',$id)->paginate(8);
         } else {
-            $subcategory = Subcategory::all();
+            $subcategory = Subcategory::paginate(8);
         }
         return view('admin.subcategory.index', compact('subcategory'));
     }

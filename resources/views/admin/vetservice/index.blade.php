@@ -58,5 +58,6 @@
                 </table>
             </div>
         </section>
+        {{ $vetservice->links() }}
     </div>
 @endsection

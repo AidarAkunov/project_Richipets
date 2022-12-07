@@ -13,9 +13,9 @@ class ProductController extends Controller{
 
     public function index($id = null) {
         if (isset($id)) {
-            $product = Product::where('brand_id',$id)->get();
+            $product = Product::where('brand_id',$id)->paginate(8);
         } else {
-            $product = Product::all();
+            $product = Product::paginate(8);
         }
 
         return view('admin.product.index', compact('product'));

@@ -60,5 +60,6 @@
                 </table>
             </div>
         </section>
+        {{ $product->withQueryString()->links() }}
     </div>
 @endsection

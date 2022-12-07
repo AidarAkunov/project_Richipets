@@ -14,9 +14,6 @@
                         <a class="navbar-brand logo_h" href="{{ route('basic.main.index') }}"><img class="w-50" src="{{ asset('logo/logo2.jpg') }}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="ti-heart"></span>
-                            <span class="ti-heart"></span>
-                            <span class="ti-heart"></span>
                         </button>
                     </div>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
@@ -40,10 +37,10 @@
                 </div>
             </nav>
         </div>
-        <div class="search_input" id="search_input_box">
+        <div class="search_field" id="search_input_box">
             <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                <form action="{{ route('basic.productAll.index') }}" class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_field" name="search_field" placeholder="Поиск товара">
                     <button type="submit" class="btn"></button>
                     <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
                 </form>

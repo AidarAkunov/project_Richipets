@@ -22,7 +22,7 @@ class Product extends Model
     }
 
     public function property() {
-        return $this->belongsToMany(Property::class, 'product_properties','product_id','property_id');
+        return $this->belongsToMany(ProductProperty::class, 'product_properties','product_id','property_id');
     }
 
     public function image() {

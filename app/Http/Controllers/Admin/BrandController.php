@@ -11,9 +11,9 @@ class BrandController extends Controller{
 
     public function index($id = null) {
         if (isset($id)) {
-            $brand = Brand::where('subcategory_id',$id)->get();
+            $brand = Brand::where('subcategory_id',$id)->paginate(8);
         } else {
-            $brand = Brand::all();
+            $brand = Brand::paginate(8);
         }
         return view('admin.brand.index', compact('brand'));
     }

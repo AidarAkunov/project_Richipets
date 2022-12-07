@@ -9,7 +9,7 @@ use App\Models\Admin\Product;
 class ProductFilterController extends Controller
 {
     public function index(ProductFilter $request){
-        $product = Product::filter($request)->get();
+        $product = Product::filter($request)->paginate(8);
         return view('admin.product.index', compact('product'));
     }
 }

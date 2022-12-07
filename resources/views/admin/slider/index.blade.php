@@ -54,5 +54,6 @@
                 </table>
             </div>
         </section>
+        {{ $slider->links() }}
     </div>
 @endsection

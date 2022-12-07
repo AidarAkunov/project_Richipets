@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
         <div class="main_menu">
@@ -14,9 +17,6 @@
                         <a class="navbar-brand logo_h" href="{{ route('basic.main.index') }}"><img class="w-50" src="{{ asset('logo/logo2.jpg') }}" alt="logo"></a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="ti-heart"></span>
-                            <span class="ti-heart"></span>
-                            <span class="ti-heart"></span>
                         </button>
                     </div>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
@@ -40,10 +40,10 @@
                 </div>
             </nav>
         </div>
-        <div class="search_input" id="search_input_box">
+        <div class="search_field" id="search_input_box">
             <div class="container">
-                <form class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                <form action="{{ route('basic.productAll.index') }}" class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_field" name="search_field" placeholder="Поиск товара">
                     <button type="submit" class="btn"></button>
                     <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
                 </form>
@@ -69,46 +69,55 @@
                 <div class="sidebar-filter mt-0">
                     <div class="top-filter-head">Фильтрация</div>
                     <div class="common-filter">
-                        <div class="head">{{ $subcategory->name }}</div>
+                        <div class="head">Поиск товара</div>
+                        <form action="{{ route('basic.productAll.index') }}">
+                            <div class="input-group">
+                                <input name="search_field" type="text" class="form-control form-control" placeholder="Название товара">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-md btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="common-filter">
                         <div class="head">Бренды</div>
                         <form class="filter_form" action="#">
+                            @csrf
                             @foreach($brand as $row)
                                 <ul>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" value="{{ $row->id }}" id="brand" name="brand"><label for="brand">{{ $row->name }}</label></li>
+                                    <li class="filter-list">
+                                        <input class="pixel-radio" type="radio" value="{{ $row->id }}" id="brand" name="brand">
+                                        <label for="brand">{{ $row->name }}</label>
+{{--                                        <input type="hidden" value="{{ csrf_token() }}" name='_token' class="form-control" id="_token">--}}
+                                    </li>
                                 </ul>
                             @endforeach
                         </form>
                     </div>
-                    @foreach ($property as $row)
-                        <div class="common-filter">
-                            <div class="head">{{ $row->name }}</div>
-                            <form action="#">
-                                @foreach($row->propertyValue as $row)
-                                <ul>
-                                    <li class="filter-list"><input class="pixel-radio" type="radio" value="{{ $row->id }}" id="brand" name="property"><label for="brand">{{ $row->name }}</label></li>
-                                </ul>
-                                @endforeach
-                            </form>
-                        </div>
-                    @endforeach
-                    <div class="common-filter">
-                        <div class="head">Price</div>
-                        <div class="price-range-area">
-                            <div id="price-range"></div>
-                            <div class="value-wrapper d-flex">
-                                <div class="price">Price:</div>
-                                <span>$</span>
-                                <div id="lower-value"></div>
-                                <div class="to">to</div>
-                                <span>$</span>
-                                <div id="upper-value"></div>
+                    <form action="#">
+                        @csrf
+
+                        @foreach ($property as $row)
+                            <div class="common-filter">
+                                <div class="head">{{ $row->name }}</div>
+                                    @foreach($row->propertyValue as $value)
+                                    <ul>
+                                        <li class="filter-list">
+                                            <input class="pixel-radio" type="checkbox" value="{{ $value->id }}" id="propertyValue" name="propertyValue[]">
+                                            <label for="property">{{ $value->name }}</label>
+    {{--                                        <input type="hidden" value="{{ csrf_token() }}" name='_token' class="form-control" id="_token">--}}
+                                        </li>
+                                    </ul>
+                                    @endforeach
                             </div>
-                        </div>
-                    </div>
+                        @endforeach
+
+                    </form>
                 </div>
             </div>
+
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row">
@@ -116,7 +125,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <a href="{{ route('basic.productOne.index', $row->id) }}">
-                                    <img class="img-fluid" src="img/product/p4.jpg" alt="">
+                                    <img class="img-fluid" src="#####" alt="image">
                                     <div class="product-details">
                                         <h6>{{ $row->name }}</h6>
                                         <div class="price">
@@ -135,33 +144,44 @@
                         @endforeach
                     </div>
                 </section>
-
-                <div class="filter-bar d-flex flex-wrap align-items-center">
-                    <div class="pagination">
-                        <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-                        <a href="#">6</a>
-                        <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <!-- End Filter Bar -->
+                {{ $productAll->links() }}
             </div>
         </div>
     </div>
-    <script
-        src="https://code.jquery.com/jquery-3.6.1.js"
-        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-        crossorigin="anonymous"></script>
-    <script>
-        $("form :input").change(function(){
-        console.log($(this).closest('form').serialize())
-{{--          $.ajax({url: "demo_test.txt", success: function(result){--}}
+{{--<script>--}}
+{{--        $("form :input").change(function(){--}}
+{{--        console.log($(this).closest('form').serialize())--}}
+{{--          $.ajax({--}}
+{{--          type: "POST",--}}
+{{--          data:{--}}
+{{--              id:id,--}}
+{{--              name:name,--}}
+{{--          }--}}
+{{--          url: "basic.productAll.index",--}}
+{{--          success: function(result){--}}
 {{--            $("#div1").html(result);--}}
 {{--          }});--}}
-        });
-    </script>
+{{--        });--}}
+{{--    </script>--}}
+    <script type="text/javascript">
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $("form :input").change(function(){
+            var data = $(this).closest('form').serialize();
+            console.log(data);
+            $.ajax({
+               type:'POST',
+               url:"{{ route('ajaxRequest.post') }}",
+               data: data,
+               success:function(data){
+               }
+            });
+
+        });
+</script>
 @endsection

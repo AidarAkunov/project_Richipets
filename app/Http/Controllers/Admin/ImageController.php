@@ -12,9 +12,9 @@ class ImageController extends Controller{
 
     public function index($id =null) {
         if (isset($id)) {
-            $image = Image::where('product_id', $id)->get();
+            $image = Image::where('product_id', $id)->paginate(8);
         } else {
-            $image = Image::all();
+            $image = Image::paginate(8);
         }
 
         return view('admin.image.index', compact('image'));

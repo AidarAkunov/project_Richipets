@@ -57,5 +57,6 @@
                 </table>
             </div>
         </section>
+        {{ $image->links() }}
     </div>
 @endsection
