@@ -18,6 +18,7 @@ class CreateVetServicesTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('phone');
+            $table->string('image')->nullable();
             $table->string('link');
             $table->timestamps();
         });

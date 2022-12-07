@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Product;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Product;
+use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
 
 
@@ -15,12 +17,15 @@ class ProductController extends Controller{
         } else {
             $product = Product::all();
         }
+
         return view('admin.product.index', compact('product'));
     }
 
     public function create() {
+        $subcategory = Subcategory::all();
         $brand = Brand::all();
-        return view('admin.product.create', compact('brand'));
+
+        return view('admin.product.create', compact('subcategory','brand' ));
     }
 
     public function store(Request $request) {
@@ -29,16 +34,20 @@ class ProductController extends Controller{
             'original_cost' => 'required|string',
             'price' => 'required|string',
             'count' => 'required|integer',
-            'brand_id' => 'required|integer'
+            'brand_id' => 'required|integer',
+            'subcategory_id' => 'required|integer'
         ]);
         Product::create($data);
+
         return redirect(route('admin.product.index'));
     }
 
     public function edit($id) {
+        $subcategory = Subcategory::all();
         $brand = Brand::all();
         $product = Product::find($id);
-        return view('admin.product.edit', compact('product','brand'));
+
+        return view('admin.product.edit', compact('subcategory','brand','product'));
     }
 
     public function update(Request $request, $id) {
@@ -47,7 +56,8 @@ class ProductController extends Controller{
             'original_cost' => 'required|string',
             'price' => 'required|string',
             'count' => 'required|integer',
-            'brand_id' => 'required|integer'
+            'brand_id' => 'required|integer',
+            'subcategory_id' => 'required|integer'
         ]);
 
         $product = Product::find($id);

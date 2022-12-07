@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Subcategory;
+use App\Models\Admin\Category;
+use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class SubcategoryController extends Controller{
@@ -26,9 +27,13 @@ class SubcategoryController extends Controller{
     public function store(Request $request) {
         $data = $request->validate([
             'name' => 'required|string',
+            'image' => 'file',
             'category_id' => 'required|integer'
         ]);
+
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         Subcategory::create($data);
+
         return redirect(route('admin.subcategory.index'));
     }
 
@@ -41,8 +46,15 @@ class SubcategoryController extends Controller{
     public function update(Request $request, $id) {
         $data = $request->validate([
             'name' => 'required|string',
+            'image' => 'file',
             'category_id' => 'required|integer'
         ]);
+        if(isset($data['image'])) {
+            $subcategory = Subcategory::find($id);
+            $image_path = public_path(). '/storage/' . $subcategory->image;
+            unlink($image_path);
+            $data['image'] = Storage::disk('public')->put('/images', $data['image']);
+        }
 
         $subcategory = Subcategory::find($id);
         $subcategory->update($data);
@@ -52,6 +64,8 @@ class SubcategoryController extends Controller{
 
     public function destroy($id) {
         $subcategory = Subcategory::find($id);
+        $image_path = public_path(). '/storage/' . $subcategory->image;
+        unlink($image_path);
         $subcategory->delete();
 
         return redirect(route('admin.subcategory.index'));

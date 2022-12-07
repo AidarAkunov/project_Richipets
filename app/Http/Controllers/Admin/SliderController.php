@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Slider;
+use App\Models\Admin\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,10 +23,10 @@ class SliderController extends Controller
     public function store(Request $request){
         $data = $request->validate([
             'name' => 'required|string',
-            'link' => 'required|file',
+            'image' => 'required|file',
         ]);
 
-        $data['link'] = Storage::disk('public')->put('/images', $data['link']);
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         Slider::create($data);
 
         return redirect(route('admin.slider.index'));
@@ -41,14 +41,14 @@ class SliderController extends Controller
     public function update(Request $request, $id){
         $data = $request->validate([
             'name' => 'required|string',
-            'link' => 'file',
+            'image' => 'file',
         ]);
 
-        if(isset($data['link'])) {
+        if(isset($data['image'])) {
             $slider = Slider::find($id);
-            $slider_path = public_path(). '/storage/' .$slider->link;
+            $slider_path = public_path(). '/storage/' .$slider->image;
             unlink($slider_path);
-            $data['link'] = Storage::disk('public')->put('/images', $data['link']);
+            $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         }
 
         $slider = Slider::find($id);
@@ -59,7 +59,7 @@ class SliderController extends Controller
 
     public function destroy($id){
         $slider = Slider::find($id);
-        $slider_path = public_path(). '/storage/' .$slider->link;
+        $slider_path = public_path(). '/storage/' .$slider->image;
         unlink($slider_path);
         $slider->delete();
 

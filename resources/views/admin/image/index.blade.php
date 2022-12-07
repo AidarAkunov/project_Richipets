@@ -1,60 +1,61 @@
-@extends('admin.layout')
+@extends('admin.main.layout')
 
 @section('title')
-        Изображения
+    Изображения
 @endsection
 
 @section('content')
-<div class="content-wrapper">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1 class="m-0 fw-bold text-center">Изображения</h1>
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1 class="m-0 fw-bold text-center">Изображения</h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <a href="{{ route('admin.index') }}">
-                        <button type="button"  class="btn btn-primary m-0 text-center">На главную</button>
-                    </a>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <a href="{{ route('admin.main.index') }}">
+                            <button type="button" class="btn btn-primary m-0 text-center">На главную</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="{{ route('admin.image.create') }}">
+                            <button type="button" class="btn btn-primary float-sm-right">Добавить изображение</button>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-sm-6">
-                    <a href="{{ route('admin.image.create') }}">
-                        <button type="button" class="btn btn-primary float-sm-right">Добавить изображение</button>
-                    </a>
-                </div>
-            </div>
-            <table class="table table-bordered table-striped">
-                <thead>
+                <table class="table table-bordered table-striped">
+                    <thead>
                     <tr class="text-center">
                         <th>Изображение</th>
                         <th>Продукт</th>
                         <th>Дата</th>
                         <th colspan="2" class="text-center">Действия</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     @foreach ($image as $row)
                         <tr>
                             <td>
                                 <div class="text-center h-25 w-25">
-                                    <img src="{{ asset('storage/' . $row->name) }}" class="rounded w-50 h-50" alt="name">
+                                    <img src="{{ asset('storage/' . $row->image) }}" class="rounded w-50 h-50"
+                                         alt="name">
                                 </div>
                             </td>
                             <td>{{ $row->product_id }}</td>
-                            <td>{{ $row->created_at->format('Дата: d.m.y, Время: H:m:s')}}</td>
-                            <td><a href = "{{ route('admin.image.edit', $row->id) }}">Изменить</a></td>
-                            <td><a href = "{{ route('admin.image.destroy', $row->id) }}">Удалить</a></td>
+                            <td>{{ $row->created_at->format('d/m/y H:m:s')}}</td>
+                            <td><a href="{{ route('admin.image.edit', $row->id) }}">Изменить</a></td>
+                            <td><a href="{{ route('admin.image.destroy', $row->id) }}">Удалить</a></td>
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
-        </div>
-    </section>
-</div>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
 @endsection

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Subcategory;
-use App\Models\VetService;
+use App\Models\Admin\Subcategory;
+use App\Models\Admin\VetService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 
 class VetServiceController extends Controller{
@@ -24,10 +25,14 @@ class VetServiceController extends Controller{
             'name' => 'required|string',
             'description' => 'required|string',
             'phone' => 'required|string',
+            'image' => 'required|file',
             'link' => 'required|string',
             'subcategory_id' => 'required|integer'
         ]);
+
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         VetService::create($data);
+
         return redirect(route('admin.vetservice.index'));
     }
 
@@ -42,9 +47,17 @@ class VetServiceController extends Controller{
             'name' => 'required|string',
             'description' => 'required|string',
             'phone' => 'required|string',
+            'image' => 'file',
             'link' => 'required|string',
             'subcategory_id' => 'required|integer'
         ]);
+
+        if(isset($data['image'])) {
+            $vetservice = VetService::find($id);
+            $image_path = public_path(). '/storage/' . $vetservice->image;
+            unlink($image_path);
+            $data['image'] = Storage::disk('public')->put('/images', $data['image']);
+        }
 
         $vetservice = VetService::find($id);
         $vetservice->update($data);
@@ -54,6 +67,8 @@ class VetServiceController extends Controller{
 
     public function destroy($id) {
         $vetservice = VetService::find($id);
+        $image_path = public_path(). '/storage/' . $vetservice->image;
+        unlink($image_path);
         $vetservice->delete();
 
         return redirect(route('admin.vetservice.index'));

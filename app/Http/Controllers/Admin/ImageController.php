@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Image;
-use App\Models\Product;
+use App\Models\Admin\Image;
+use App\Models\Admin\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,11 +27,11 @@ class ImageController extends Controller{
 
     public function store(Request $request) {
         $data = $request->validate([
-            'name' => 'required|file',
+            'image' => 'required|file',
             'product_id' => 'required|integer',
         ]);
 
-        $data['name'] = Storage::disk('public')->put('/images', $data['name']);
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         Image::create($data);
 
         return redirect(route('admin.image.index'));
@@ -46,15 +46,15 @@ class ImageController extends Controller{
 
     public function update(Request $request, $id) {
         $data = $request->validate([
-            'name' => 'file',
+            'image' => 'file',
             'product_id' => 'required|integer',
         ]);
 
-        if(isset($data['name'])) {
+        if(isset($data['image'])) {
             $image = Image::find($id);
-            $image_path = public_path(). '/storage/' . $image->name;
+            $image_path = public_path(). '/storage/' . $image->image;
             unlink($image_path);
-            $data['name'] = Storage::disk('public')->put('/images', $data['name']);
+            $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         }
 
         $image = Image::find($id);
@@ -65,7 +65,7 @@ class ImageController extends Controller{
 
     public function destroy($id) {
         $image = Image::find($id);
-        $image_path = public_path(). '/storage/' . $image->name;
+        $image_path = public_path(). '/storage/' . $image->image;
         unlink($image_path);
         $image->delete();
 

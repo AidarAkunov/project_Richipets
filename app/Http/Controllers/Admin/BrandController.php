@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
-use App\Models\Subcategory;
+use App\Models\Admin\Brand;
+use App\Models\Admin\Subcategory;
 use Illuminate\Http\Request;
 
 

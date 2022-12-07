@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Filters\ProductFilter;
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Admin\Product;
 
 class ProductFilterController extends Controller
 {
