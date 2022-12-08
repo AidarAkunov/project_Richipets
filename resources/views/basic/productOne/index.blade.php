@@ -18,7 +18,7 @@
                     </div>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
                             @foreach($category as $row)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('basic.subcategory.index', $row->id) }}">{{ $row->name }}</a>
@@ -26,7 +26,7 @@
                             @endforeach
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-truck"></span></a></li>
+                            <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-heart"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
@@ -53,15 +53,12 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Все товары</h1>
+                    <h1>{{ $productOne->name }}</h1>
                 </div>
             </div>
         </div>
     </section>
     <!-- End Banner Area -->
-
-
-
     <!--================Single Product Area =================-->
     <section class="mb-5">
         <div class="product_image_area">
@@ -69,24 +66,18 @@
                 <div class="row s_product_inner">
                     <div class="col-lg-6">
                         <div class="s_Product_carousel">
+                            @foreach($productOne->image as $row)
                             <div class="single-prd-item">
-                                <img class="img-fluid" src="{{ asset('img/category/s-p1.jpg') }}" alt="product">
+                                <img class="img-fluid" src="{{ asset('storage/' . $row->image) }}" alt="image">
                             </div>
-                            <div class="single-prd-item">
-                                <img class="img-fluid" src="{{ asset('img/category/s-p1.jpg') }}" alt="product">
-                            </div>
-                            <div class="single-prd-item">
-                                <img class="img-fluid" src="{{ asset('img/category/s-p1.jpg') }}" alt="product">
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1">
                         <div class="s_product_text">
                             <h3>{{ $productOne->name }}</h3>
                             <h2>{{ $productOne->price }}</h2>
-                            <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-                                something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-                                during the winter.</p>
+                            <p>{{ $productOne->description }}</p>
                             <div class="product_count">
                                 <label for="qty">Quantity:</label>
                                 <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">

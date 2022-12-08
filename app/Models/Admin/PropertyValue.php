@@ -11,7 +11,7 @@ class PropertyValue extends Model
 
     protected  $guarded = [];
 
-    public function property() {
-        return $this->belongsTo(Property::class,'property_id','id');
+    public function products() {
+        return $this->belongsToMany(Product::class,'products');
     }
 }

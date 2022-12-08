@@ -23,6 +23,14 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="description">Описание</label>
+                                <input type="text" value="{{ $product->description }}" class="form-control" name='description'
+                                       id="description">
+                                @error('description')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="original_cost">Себестоимость</label>
                                 <input type="text" value="{{ $product->original_cost }}" class="form-control"
                                        name='original_cost' id="original_cost">

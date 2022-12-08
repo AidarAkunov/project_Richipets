@@ -23,6 +23,14 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label for="Name">Описание</label>
+                                <input type="text" value="{{ old('description') }}" class="form-control" name='description' id="description"
+                                       placeholder="Введите описание товара">
+                                @error('description')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="original_cost">Себестоимость</label>
                                 <input type="text" value="{{ old('original_cost') }}" class="form-control"
                                        name='original_cost' id="original_cost" placeholder="Введите себестоимость">

@@ -34,7 +34,7 @@ use App\Models\Basic\BasicBrands;
                             @endforeach
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-truck"></span></a></li>
+                            <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-heart"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
@@ -62,35 +62,30 @@ use App\Models\Basic\BasicBrands;
     <section class="banner-area">
         <div class="container">
             <div class="row fullscreen align-items-center justify-content-start">
-                <div class="col-lg-12">
-
-{{--                    <div id="demo" class="carousel slide" data-bs-ride="carousel">--}}
-{{--                        <!-- Indicators/dots -->--}}
-{{--                        <div class="carousel-indicators">--}}
-{{--                            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>--}}
-{{--                            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>--}}
-{{--                            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>--}}
-{{--                            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>--}}
-{{--                            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>--}}
-{{--                        </div>--}}
-
-{{--                        <!-- The slideshow/carousel -->--}}
-{{--                        <div class="carousel-inner carousel-fade">--}}
-{{--                            @foreach($slider as $row)--}}
-{{--                                <div class=" carousel-item active border border-5 rounded>" data-bs-interval="3000" style="margin-top:80px">--}}
-{{--                                    <img src="{{ asset('storage/' . $row->image) }}" alt="papa1" class="d-block rounded" style="width:100%">--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-
-{{--                        <!-- Left and right controls/icons -->--}}
-{{--                        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">--}}
-{{--                            <span class="carousel-control-prev-icon"></span>--}}
-{{--                        </button>--}}
-{{--                        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">--}}
-{{--                            <span class="carousel-control-next-icon"></span>--}}
-{{--                        </button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8 col-md-6">
+                    <div id="foto_villa" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" style="margin-top: 100px">
+                            {{ $i=0 }}
+                            @foreach ($slider as $row)
+                                <?php if ($i==0) {$set_ = 'active'; } else {$set_ = ''; } ?>
+                            <div class='carousel-item <?php echo $set_; ?>'>
+                                <img src="{{ asset('storage/' . $row->image) }}" class='d-block w-100'>
+                            </div>
+                            {{ $i++ }}
+                            @endforeach
+                        </div>
+                        <a class='carousel-control-prev' href='#foto_villa' role='button' data-slide='prev'>
+                            <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Previous</span>
+                        </a>
+                        <a class='carousel-control-next' href='#foto_villa' role='button' data-slide='next'>
+                            <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                            <span class='sr-only'>Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
                 </div>
             </div>
         </div>
@@ -134,10 +129,11 @@ use App\Models\Basic\BasicBrands;
             </div>
         </div>
     </section>
+
 {{--    Самые дешевые--}}
-    <div class="row col-lg-12 m-5">
+    <div class="row col-lg-12 col-md-6 m-5">
         <div>
-            <h1 class="text-lg-center text-muted">Самые дешевые</h1>
+            <h2 class="text-lg-center text-warning">Самые дешевые</h2>
         </div>
     </div>
     <section>
@@ -147,7 +143,13 @@ use App\Models\Basic\BasicBrands;
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
                             <a href="{{ route('basic.productOne.index', $row->id) }}">
-                                <img class="img-fluid" src="#####" alt="image">
+                                <div class="s_Product_carousel">
+                                    @foreach($row->image as $images)
+                                        <div class="single-prd-item">
+                                            <img class="img-fluid" src="{{ asset('storage/' . $images->image) }}" alt="image">
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="product-details">
                                     <h6>{{ $row->name }}</h6>
                                     <div class="price">
@@ -155,7 +157,7 @@ use App\Models\Basic\BasicBrands;
                                         <h6> {{ $row->price }}</h6>
                                     </div>
                                     <div class="prd-bottom">
-                                        <a href="" class="social-info">
+                                        <a href="#" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">В корзину</p>
                                         </a>
@@ -169,19 +171,25 @@ use App\Models\Basic\BasicBrands;
         </div>
     </section>
 {{--    Популярные товары--}}
-    <div class="row col-lg-12 m-5">
+    <div class="row col-lg-12 col-md-6 m-5">
         <div>
-            <h1 class="text-lg-center text-muted">Популярные товары</h1>
+            <h2 class="text-lg-center text-warning">Популярные товары</h2>
         </div>
     </div>
-    <section>
+    <section class="mb-5">
         <div class="container">
             <div class="row col-lg-12">
                 @foreach($popular->slice(0, 4) as $row)
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
                             <a href="{{ route('basic.productOne.index', $row->id) }}">
-                                <img class="img-fluid" src="#####" alt="image">
+                                <div class="s_Product_carousel">
+                                    @foreach($row->image as $images)
+                                        <div class="single-prd-item">
+                                            <img class="img-fluid" src="{{ asset('storage/' . $images->image) }}" alt="image">
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="product-details">
                                     <h6>{{ $row->name }}</h6>
                                     <div class="price">
@@ -189,7 +197,7 @@ use App\Models\Basic\BasicBrands;
                                         <h6> {{ $row->price }}</h6>
                                     </div>
                                     <div class="prd-bottom">
-                                        <a href="" class="social-info">
+                                        <a href="#" class="social-info">
                                             <span class="ti-bag"></span>
                                             <p class="hover-text">В корзину</p>
                                         </a>

@@ -1,9 +1,15 @@
+<?php
 
+use App\Models\Admin\Brand;
+use App\Models\Admin\Product;
+use App\Models\Basic\BasicBrands;
+
+?>
 
 @extends('basic.main.layout')
 
 @section('title')
-    Подкатегории
+    Доставка
 @endsection
 
 @section('content')
@@ -20,8 +26,8 @@
                     </div>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item "><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
-                            @foreach($category as $row)
+                            <li class="nav-item"><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
+                            @foreach ($category as $row)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('basic.subcategory.index', $row->id) }}">{{ $row->name }}</a>
                                 </li>
@@ -39,6 +45,7 @@
                 </div>
             </nav>
         </div>
+
         <div class="search_field" id="search_input_box">
             <div class="container">
                 <form action="{{ route('basic.productAll.index') }}" class="d-flex justify-content-between">
@@ -50,39 +57,34 @@
         </div>
     </header>
     <!-- End Header Area -->
+
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Катерогии товаров</h1>
+                    <h1>Доставка</h1>
                 </div>
             </div>
         </div>
     </section>
     <!-- End Banner Area -->
+    <section class="sample-text-area">
+        <div class="container">
+            <h3 class="text-heading">Оформление заявок и доставка</h3>
+            <p class="sample-text">
+                Приём заявок осуществляется ежедневно с <b>12.00 до 21.00</b>
+                Время доставки определяется по согласованию с Вами.
+                Доставка производится через <b>курьерские службы.</b><br> (Доставку в регионы страны уточняйте по телефону).</p>
 
-    <div class="container">
-        <div class="row">
+            <h3 class="text-heading">Оплата</h3>
+            <p class="sample-text">
+                Оплата осуществляется <b>наличными</b> курьеру при доставке заказа, а так же посредством <b>интернет-банкинга</b> систем Optima Bank, Банк Кыргызстан (MBank).</p>
 
-            <div class="col-xl-12 col-lg-8 col-md-7">
-                <section class="lattest-product-area pb-40 category-list">
-                    <div class="row">
-                        @foreach($subcategory as $row)
-                            <div class="col-lg-3 col-md-6">
-                                <div class="single-product">
-                                    <a href="{{ route('basic.productAll.index', $row->id) }}">
-                                        <img class="img-fluid" style="width: 250px; height: 250px" src="{{ asset('storage/' . $row->image) }}" alt="image">
-                                        <div class="product-details">
-                                            <h6 class="text-center">{{ $row->name }}</h6>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </section>
-            </div>
+            <h3 class="text-heading">Условия возврата</h3>
+            <p class="sample-text">
+            В случае, если вдруг вы решите вернуть уже оплаченный товар, вы можете позвонить по телефону +996 553 23 30 20<br>
+            Срок возврата товара надлежащего качества составляет <b>14 дней</b>  с момента получения товара.</p>
         </div>
-    </div>
+    </section>
 @endsection

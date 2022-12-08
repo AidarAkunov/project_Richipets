@@ -3,21 +3,21 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductFilterController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\VetServiceController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\ImageController;
-use App\Http\Controllers\Admin\ProductFilterController;
+use App\Http\Controllers\Admin\AnalysisController;
 
-use App\Http\Controllers\AjaxController;
-use App\Http\Controllers\Basic\ProductAllController;
-use App\Http\Controllers\Basic\ProductOneController;
+
+use App\Http\Controllers\Basic\AjaxController;
 use App\Http\Controllers\Basic\MainController;
-use App\Http\Controllers\Basic\SubcategoryViewController;
+use App\Http\Controllers\Basic\ProductAllController;
 use App\Http\Controllers\Basic\ProductFilterMainController;
-
-
+use App\Http\Controllers\Basic\ProductOneController;
+use App\Http\Controllers\Basic\SubcategoryViewController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -97,18 +97,27 @@ Route::get('admin/image/edit/{id}', [ImageController::class, 'edit'])->name('adm
 Route::post('admin/image/update/{id}', [ImageController::class, 'update'])->name('admin.image.update');
 Route::get('admin/image/destroy/{id}', [ImageController::class, 'destroy'])->name('admin.image.destroy');
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/analysis/index', [AnalysisController::class, 'index'])->name('admin.analysis.index');
+Route::get('admin/analysis/create', [AnalysisController::class, 'create'])->name('admin.analysis.create');
+Route::post('admin/analysis/create', [AnalysisController::class, 'store'])->name('admin.analysis.store');
+Route::get('admin/analysis/edit/{id}', [AnalysisController::class, 'edit'])->name('admin.analysis.edit');
+Route::post('admin/analysis/update/{id}', [AnalysisController::class, 'update'])->name('admin.analysis.update');
+Route::get('admin/analysis/destroy/{id}', [AnalysisController::class, 'destroy'])->name('admin.analysis.destroy');
+
 
 //--------BASIC--------///
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('basic/main/index', [MainController::class, 'index'])->name('basic.main.index');
 
+Route::get('basic/main/delivery', [MainController::class, 'delivery'])->name('basic.main.delivery');
+
 Route::get('basic/subcategory/index/{id?}', [SubcategoryViewController::class, 'index'])->name('basic.subcategory.index');
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('basic/productAll/index/{id?}', [ProductAllController::class, 'index'])->name('basic.productAll.index');
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Route::get('basic/productOne/index', [ProductOneController::class, 'index'])->name('basic.productOne.index');
+Route::get('basic/productOne/index/{id?}', [ProductOneController::class, 'index'])->name('basic.productOne.index');
 
 Route::get('basic/productAll/index/{id?}', [ProductFilterMainController::class, 'index'])->name('basic.productAll.index');
+
 Route::post('ajaxRequest', [AjaxController::class, 'filter'])->name('ajaxRequest.post');

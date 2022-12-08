@@ -21,8 +21,8 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class,'brand_id','id');
     }
 
-    public function property() {
-        return $this->belongsToMany(ProductProperty::class, 'product_properties','product_id','property_id');
+    public function propertyValue() {
+            return $this->belongsToMany(PropertyValue::class, 'product_properties', 'product_id', 'property_value_id');
     }
 
     public function image() {

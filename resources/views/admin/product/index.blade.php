@@ -33,6 +33,7 @@
                     <thead>
                     <tr class="text-center">
                         <th>Товары</th>
+                        <th>Описание</th>
                         <th>Себестоимость</th>
                         <th>Цена</th>
                         <th>Количество</th>
@@ -46,6 +47,7 @@
                     @foreach ($product as $row)
                         <tr>
                             <td>{{ $row->name }}</td>
+                            <td>{{ $row->description }}</td>
                             <td>{{ $row->original_cost }}</td>
                             <td>{{ $row->price }}</td>
                             <td>{{ $row->count }}</td>

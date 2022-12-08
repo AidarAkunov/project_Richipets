@@ -9,12 +9,12 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Product;
 use App\Models\Admin\Property;
 
-
 class ProductFilterMainController extends Controller
 {
-    public function index(ProductFilter $request, $id = null){
+    public function index(ProductFilter $request, $id = null)
+    {
         if (isset($id)) {
-            $productAll = Product::where('subcategory_id',$id)->paginate(8);
+            $productAll = Product::where('subcategory_id', $id)->paginate(8);
         } else {
             $productAll = Product::filter($request)->paginate(8);
         }
@@ -22,6 +22,6 @@ class ProductFilterMainController extends Controller
         $brand = Brand::all();
         $property = Property::all();
 
-        return view('basic.productAll.index', compact('productAll','category', 'brand', 'property'));
+        return view('basic.productAll.index', compact('productAll', 'category', 'brand', 'property'));
     }
 }

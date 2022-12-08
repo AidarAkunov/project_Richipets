@@ -21,7 +21,7 @@
                     </div>
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
-                            <li class="nav-item active"><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('basic.main.index') }}">Главная</a></li>
                             @foreach($category as $row)
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('basic.subcategory.index', $row->id) }}">{{ $row->name }}</a>
@@ -29,7 +29,7 @@
                             @endforeach
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-truck"></span></a></li>
+                            <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-heart"></span></a></li>
                             <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
@@ -81,39 +81,35 @@
                             </div>
                         </form>
                     </div>
-                    <div class="common-filter">
-                        <div class="head">Бренды</div>
-                        <form class="filter_form" action="#">
-                            @csrf
-                            @foreach($brand as $row)
-                                <ul>
-                                    <li class="filter-list">
-                                        <input class="pixel-radio" type="radio" value="{{ $row->id }}" id="brand" name="brand">
-                                        <label for="brand">{{ $row->name }}</label>
-{{--                                        <input type="hidden" value="{{ csrf_token() }}" name='_token' class="form-control" id="_token">--}}
-                                    </li>
-                                </ul>
-                            @endforeach
-                        </form>
-                    </div>
+{{--                    <div class="common-filter">--}}
+{{--                        <div class="head">Бренды</div>--}}
+{{--                        <form class="filter_form" action="#">--}}
+{{--                            @csrf--}}
+{{--                            @foreach($brand as $row)--}}
+{{--                                <ul>--}}
+{{--                                    <li class="filter-list">--}}
+{{--                                        <input class="pixel-radio"  type="radio" value="{{ $row->id }}" id="brand" name="brand">--}}
+{{--                                        <label for="brand">{{ $row->name }}</label>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            @endforeach--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
                     <form action="#">
                         @csrf
-
                         @foreach ($property as $row)
                             <div class="common-filter">
                                 <div class="head">{{ $row->name }}</div>
-                                    @foreach($row->propertyValue as $value)
-                                    <ul>
-                                        <li class="filter-list">
-                                            <input class="pixel-radio" type="checkbox" value="{{ $value->id }}" id="propertyValue" name="propertyValue[]">
-                                            <label for="property">{{ $value->name }}</label>
-    {{--                                        <input type="hidden" value="{{ csrf_token() }}" name='_token' class="form-control" id="_token">--}}
-                                        </li>
-                                    </ul>
-                                    @endforeach
+                                @foreach($row->propertyValue as $value)
+                                <ul>
+                                    <li class="filter-list">
+                                        <input class="pixel-radio" type="checkbox" value="{{ $value->id }}" id="propertyValue" name="propertyValue[]">
+                                        <label for="property">{{ $value->name }}</label>
+                                    </li>
+                                </ul>
+                                @endforeach
                             </div>
                         @endforeach
-
                     </form>
                 </div>
             </div>
@@ -125,14 +121,22 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="single-product">
                                 <a href="{{ route('basic.productOne.index', $row->id) }}">
-                                    <img class="img-fluid" src="#####" alt="image">
+                                    <div class="s_Product_carousel">
+                                        @foreach($row->image as $images)
+                                            <div class="single-prd-item">
+                                                <img class="img-fluid" src="{{ asset('storage/' . $images->image) }}" alt="image">
+                                            </div>
+                                        @endforeach
+                                    </div>
                                     <div class="product-details">
-                                        <h6>{{ $row->name }}</h6>
+                                        <div class="name">
+                                            <h6>{{ $row->name }}</h6>
+                                        </div>
                                         <div class="price">
                                             <h6>{{ $row->price }}</h6>
                                         </div>
                                         <div class="prd-bottom">
-                                            <a href="" class="social-info">
+                                            <a href="#" class="social-info">
                                                 <span class="ti-bag"></span>
                                                 <p class="hover-text">В корзину</p>
                                             </a>
@@ -148,21 +152,6 @@
             </div>
         </div>
     </div>
-{{--<script>--}}
-{{--        $("form :input").change(function(){--}}
-{{--        console.log($(this).closest('form').serialize())--}}
-{{--          $.ajax({--}}
-{{--          type: "POST",--}}
-{{--          data:{--}}
-{{--              id:id,--}}
-{{--              name:name,--}}
-{{--          }--}}
-{{--          url: "basic.productAll.index",--}}
-{{--          success: function(result){--}}
-{{--            $("#div1").html(result);--}}
-{{--          }});--}}
-{{--        });--}}
-{{--    </script>--}}
     <script type="text/javascript">
 
         $.ajaxSetup({
@@ -170,10 +159,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         $("form :input").change(function(){
             var data = $(this).closest('form').serialize();
-            console.log(data);
             $.ajax({
                type:'POST',
                url:"{{ route('ajaxRequest.post') }}",

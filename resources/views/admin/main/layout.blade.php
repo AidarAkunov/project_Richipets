@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
         <link rel='stylesheet' href ="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     </head>
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
@@ -44,7 +45,7 @@
                         <br>
                         <li class="nav-item">
                             <a href="{{ route('basic.main.index') }}" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
+                                <i class="nav-icon fas fa-link"></i>
                                 <p>Перейти на сайт</p>
                             </a>
                         </li>
@@ -86,25 +87,25 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.slider.index') }}" class="nav-link">
-                                <i class="nav-icon fa fa-file"></i>
+                                <i class="nav-icon fa fa-file-alt"></i>
                                 <p>Слайдер</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin.image.index') }}" class="nav-link">
-                                <i class="nav-icon fa fa-file"></i>
+                                <i class="nav-icon fa fa-photo-video"></i>
                                 <p>Изображения</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fa fa-bullhorn"></i>
-                                <p>Рекомендации</p>
+                                <p>Контент гл.страницы</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-address-book"></i>
+                            <a href="{{ route('admin.analysis.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-chart-line"></i>
                                 <p>Анализ продаж</p>
                             </a>
                         </li>
