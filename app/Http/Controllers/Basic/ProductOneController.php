@@ -11,8 +11,9 @@ class ProductOneController extends Controller
     public function index($id) {
         $productOne = Product::find($id);
         $category = Category::all();
+        $productLike = Product::where('subcategory_id', $productOne->subcategory_id)->get();
 
-        return view('basic.productOne.index', compact('category', 'productOne'));
+        return view('basic.productOne.index', compact('category', 'productOne', 'productLike'));
     }
 
 }

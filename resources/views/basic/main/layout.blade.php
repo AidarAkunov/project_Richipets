@@ -36,7 +36,7 @@
             <div>
                     <a href="https://www.instagram.com/richipets_/" class="me-4 text-reset"><i class="fa fa-instagram me-2"></i>Instagram</a>
                     <a href="https://www.facebook.com/Richipets" class="mr-4 text-reset"><i class="fa fa-facebook me-2"></i>Facebook</a>
-                    <a href="" class="me-4 text-reset"><i class="fa fa-whatsapp me-2"></i>WhatsApp</a>
+                    <a href="https://wa.me/996550990770" class="me-4 text-reset"><i class="fa fa-whatsapp me-2"></i>WhatsApp</a>
             </div>
         </section>
         <section class="">

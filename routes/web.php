@@ -10,7 +10,8 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\VetServiceController;
 use App\Http\Controllers\Admin\AnalysisController;
-
+use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\PropertyValueController;
 
 use App\Http\Controllers\Basic\AjaxController;
 use App\Http\Controllers\Basic\MainController;
@@ -35,7 +36,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//--------ADMIN--------///
+
+///--------ADMIN--------///
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/main/index', [AdminController::class, 'index'])->name('admin.main.index');
 Route::get('admin/main/index', [AdminController::class, 'show'])->name('admin.main.index');
@@ -105,19 +108,30 @@ Route::get('admin/analysis/edit/{id}', [AnalysisController::class, 'edit'])->nam
 Route::post('admin/analysis/update/{id}', [AnalysisController::class, 'update'])->name('admin.analysis.update');
 Route::get('admin/analysis/destroy/{id}', [AnalysisController::class, 'destroy'])->name('admin.analysis.destroy');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/property/index', [PropertyController::class, 'index'])->name('admin.property.index');
+Route::get('admin/property/create', [PropertyController::class, 'create'])->name('admin.property.create');
+Route::post('admin/property/create', [PropertyController::class, 'store'])->name('admin.property.store');
+Route::get('admin/property/edit/{id}', [PropertyController::class, 'edit'])->name('admin.property.edit');
+Route::post('admin/property/update/{id}', [PropertyController::class, 'update'])->name('admin.property.update');
+Route::get('admin/property/destroy/{id}', [PropertyController::class, 'destroy'])->name('admin.property.destroy');
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//--------BASIC--------///
+Route::get('admin/property/propertyValue/property_value/{id}', [PropertyValueController::class, 'index'])->name('admin.property.propertyValue.property_value');
+Route::get('admin/property/propertyValue/create/{id}', [PropertyValueController::class, 'create'])->name('admin.property.propertyValue.create');
+Route::post('admin/property/propertyValue/store{id}', [PropertyValueController::class, 'store'])->name('admin.property.propertyValue.store');
+Route::get('admin/property/propertyValue/destroy/{id}', [PropertyValueController::class, 'destroy'])->name('admin.property.propertyValue.destroy');
+Route::get('admin/property/propertyValue/edit/{id}', [PropertyValueController::class, 'edit'])->name('admin.property.propertyValue.edit');
+Route::post('admin/property/propertyValue/update/{id}', [PropertyValueController::class, 'update'])->name('admin.property.propertyValue.update');
+
+
+///--------BASIC--------///
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('basic/main/index', [MainController::class, 'index'])->name('basic.main.index');
-
 Route::get('basic/main/delivery', [MainController::class, 'delivery'])->name('basic.main.delivery');
-
 Route::get('basic/subcategory/index/{id?}', [SubcategoryViewController::class, 'index'])->name('basic.subcategory.index');
-
 Route::get('basic/productAll/index/{id?}', [ProductAllController::class, 'index'])->name('basic.productAll.index');
-
-Route::get('basic/productOne/index/{id?}', [ProductOneController::class, 'index'])->name('basic.productOne.index');
-
 Route::get('basic/productAll/index/{id?}', [ProductFilterMainController::class, 'index'])->name('basic.productAll.index');
-
+Route::get('basic/productOne/index/{id?}', [ProductOneController::class, 'index'])->name('basic.productOne.index');
 Route::post('ajaxRequest', [AjaxController::class, 'filter'])->name('ajaxRequest.post');

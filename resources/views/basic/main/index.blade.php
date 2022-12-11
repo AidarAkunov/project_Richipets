@@ -35,8 +35,6 @@ use App\Models\Basic\BasicBrands;
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-heart"></span></a></li>
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
                                 <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                             </li>
@@ -157,9 +155,9 @@ use App\Models\Basic\BasicBrands;
                                         <h6> {{ $row->price }}</h6>
                                     </div>
                                     <div class="prd-bottom">
-                                        <a href="#" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">В корзину</p>
+                                        <a href="https://wa.me/996550990770" class="social-info">
+                                            <span class="fa fa-whatsapp"></span>
+                                            <p class="hover-text">Заказать</p>
                                         </a>
                                     </div>
                                 </div>
@@ -197,9 +195,9 @@ use App\Models\Basic\BasicBrands;
                                         <h6> {{ $row->price }}</h6>
                                     </div>
                                     <div class="prd-bottom">
-                                        <a href="#" class="social-info">
-                                            <span class="ti-bag"></span>
-                                            <p class="hover-text">В корзину</p>
+                                        <a href="https://wa.me/996550990770" class="social-info">
+                                            <span class="fa fa-whatsapp"></span>
+                                            <p class="hover-text">Заказать</p>
                                         </a>
                                     </div>
                                 </div>

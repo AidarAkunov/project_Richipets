@@ -1,7 +1,7 @@
 @extends('admin.main.layout')
 
 @section('title')
-    Изображения
+    Характеристики
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0 fw-bold text-center">Изображения</h1>
+                        <h1 class="m-0 fw-bold text-center">Значение характеристик</h1>
                     </div>
                 </div>
             </div>
@@ -24,39 +24,29 @@
                         </a>
                     </div>
                     <div class="col-sm-6">
-                        <a href="{{ route('admin.image.create') }}">
-                            <button type="button" class="btn btn-primary float-sm-right">Добавить изображение</button>
+                        <a href="{{ route('admin.property.propertyValue.create', $property->id) }}">
+                            <button type="button" class="btn btn-primary float-sm-right">Добавление значение Характеристики</button>
                         </a>
                     </div>
                 </div>
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr class="text-center">
-                        <th>Изображение</th>
-                        <th>Продукт</th>
-                        <th>Дата</th>
+                        <th>Название</th>
                         <th colspan="2" class="text-center">Действия</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($image as $row)
+                    @foreach ($property_value as $row)
                         <tr>
-                            <td>
-                                <div class="text-center h-25 w-25">
-                                    <img src="{{ asset('storage/' . $row->image) }}" class="rounded w-50 h-50"
-                                         alt="image">
-                                </div>
-                            </td>
-                            <td>{{ $row->product_id }}</td>
-                            <td>{{ $row->created_at->format('d/m/y H:m:s')}}</td>
-                            <td><a href="{{ route('admin.image.edit', $row->id) }}">Изменить</a></td>
-                            <td><a href="{{ route('admin.image.destroy', $row->id) }}">Удалить</a></td>
+                            <td>{{ $row->name }}</a></td>
+                            <td><a href="{{ route('admin.property.propertyValue.destroy', $row->id) }}">Удалить</a></td>
+                            <td><a href="{{ route('admin.property.propertyValue.edit', $row->id) }}">Изменить</a></td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
             </div>
         </section>
-        {{ $image->links() }}
     </div>
 @endsection

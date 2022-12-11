@@ -27,8 +27,6 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-heart"></span></a></li>
-                            <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
                             <li class="nav-item">
                                 <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                             </li>
@@ -78,17 +76,9 @@
                             <h3>{{ $productOne->name }}</h3>
                             <h2>{{ $productOne->price }}</h2>
                             <p>{{ $productOne->description }}</p>
-                            <div class="product_count">
-                                <label for="qty">Quantity:</label>
-                                <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                        class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                        class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                            </div>
+                            <p class="fw-bold">В наличии: {{ $productOne->count }} шт.</p>
                             <div class="card_area d-flex align-items-center">
-                                <a class="primary-btn" href="#">В корзину</a>
-                                <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                                <a class="primary-btn" href="https://wa.me/996550990770">Заказать</a>
                             </div>
                         </div>
                     </div>
@@ -97,4 +87,44 @@
         </div>
     </section>
     <!--================End Single Product Area =================-->
+    {{--    Похожие товары--}}
+    <div class="row col-lg-12 col-md-6 m-5">
+        <div>
+            <h2 class="text-lg-center text-warning">Похожие товары</h2>
+        </div>
+    </div>
+    <section class="mb-5">
+        <div class="container">
+            <div class="row col-lg-12">
+                @foreach($productLike->slice(0, 4) as $row)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-product">
+                            <a href="{{ route('basic.productOne.index', $row->id) }}">
+                                <div class="s_Product_carousel">
+                                    @foreach($row->image as $images)
+                                        <div class="single-prd-item">
+                                            <img class="img-fluid" src="{{ asset('storage/' . $images->image) }}" alt="image">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="product-details">
+                                    <h6>{{ $row->name }}</h6>
+                                    <div class="price">
+                                        <h6 class="fw-bold"> Цена:</h6>
+                                        <h6> {{ $row->price }}</h6>
+                                    </div>
+                                    <div class="prd-bottom">
+                                        <a href="https://wa.me/996550990770" class="social-info">
+                                            <span class="fa fa-whatsapp"></span>
+                                            <p class="hover-text">Заказать</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 @endsection

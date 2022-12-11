@@ -36,7 +36,6 @@
                         <th>Описание</th>
                         <th>Телефон</th>
                         <th>Фото</th>
-                        <th>Ссылка</th>
                         <th>Подкатегории</th>
                         <th colspan="2" class="text-center">Действия</th>
                     </tr>
@@ -47,8 +46,12 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->description }}</td>
                             <td>{{ $row->phone }}</td>
-                            <td>{{ $row->image }}</td>
-                            <td>{{ $row->link }}</td>
+                            <td>
+                                <div class="text-center h-25 w-25">
+                                    <img src="{{ asset('storage/' . $row->image) }}" class="rounded w-50 h-50"
+                                         alt="image">
+                                </div>
+                            </td>
                             <td>{{ $row->subcategory_id }}</td>
                             <td><a href="{{ route('admin.vetservice.edit', $row->id) }}">Редактировать</a></td>
                             <td><a href="{{ route('admin.vetservice.destroy', $row->id) }}">Удалить</a></td>

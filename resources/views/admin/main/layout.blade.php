@@ -98,17 +98,23 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-bullhorn"></i>
-                                <p>Контент гл.страницы</p>
+                            <a href="{{ route('admin.property.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-archive"></i>
+                                <p>Характеристики</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('admin.analysis.index') }}" class="nav-link">
-                                <i class="nav-icon fa fa-chart-line"></i>
-                                <p>Анализ продаж</p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="#" class="nav-link">--}}
+{{--                                <i class="nav-icon fa fa-bullhorn"></i>--}}
+{{--                                <p>Контент гл.страницы</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('admin.analysis.index') }}" class="nav-link">--}}
+{{--                                <i class="nav-icon fa fa-chart-line"></i>--}}
+{{--                                <p>Анализ продаж</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </nav>
             </aside>

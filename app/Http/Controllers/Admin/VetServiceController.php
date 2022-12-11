@@ -23,7 +23,7 @@ class VetServiceController extends Controller{
     public function store(Request $request) {
         $data = $request->validate([
             'name' => 'required|string',
-            'description' => 'required|string',
+            'description' => 'required|text',
             'phone' => 'required|string',
             'image' => 'required|file',
             'link' => 'required|string',
@@ -45,9 +45,9 @@ class VetServiceController extends Controller{
     public function update(Request $request, $id) {
         $data = $request->validate([
             'name' => 'required|string',
-            'description' => 'required|string',
+            'description' => 'required|text',
             'phone' => 'required|string',
-            'image' => 'file',
+            'image' => 'required|file',
             'link' => 'required|string',
             'subcategory_id' => 'required|integer'
         ]);
