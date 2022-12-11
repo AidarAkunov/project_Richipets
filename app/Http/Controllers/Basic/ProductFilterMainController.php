@@ -12,20 +12,14 @@ use App\Models\Admin\Subcategory;
 
 class ProductFilterMainController extends Controller
 {
-    public function index(ProductFilter $request, $id = null)
+    public function index(ProductFilter $request)
     {
-        if (isset($id)) {
-            $productAll = Product::where('subcategory_id', $id)->paginate(8);
-        } else {
-            $productAll = Product::filter($request)->paginate(8);
-        }
+        $productAll = Product::filter($request)->paginate(8);
         $category = Category::all();
-        $brand = Brand::where('subcategory_id', $id)->get();
+        $brand = Brand::all();
         $property = Property::all();
-        $subcategory = Subcategory::find($id);
-        $q = $subcategory->category_id;
-        $subcategory = Subcategory::where('category_id', $q)->get();
+        $subcategory = Subcategory::all();
 
-        return view('basic.productAll.index', compact('productAll', 'category', 'brand', 'property', 'subcategory'));
+        return view('basic.productFilter.index', compact('productAll', 'category', 'brand', 'property', 'subcategory'));
     }
 }

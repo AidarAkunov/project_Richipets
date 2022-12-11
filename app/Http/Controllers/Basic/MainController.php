@@ -14,10 +14,10 @@ class MainController extends Controller
     public function index()
     {
         $category = Category::all();
-        $basicBrands = BasicBrands::all();
         $slider = Slider::all();
         $popular = Product::orderBy('count', 'desc')->get();
         $cheap = Product::orderBy('price', 'asc')->get();
+        $basicBrands = BasicBrands::all();
 
         return view('basic.main.index', compact('category', 'basicBrands', 'slider', 'popular', 'cheap'));
     }

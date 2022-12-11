@@ -1,11 +1,10 @@
 @extends('basic.main.layout')
 
 @section('title')
-    Все товары
+    Товар
 @endsection
 
 @section('content')
-
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     <!-- Start Header Area -->
@@ -152,7 +151,6 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript">
 
         $.ajaxSetup({

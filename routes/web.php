@@ -132,6 +132,6 @@ Route::get('basic/main/index', [MainController::class, 'index'])->name('basic.ma
 Route::get('basic/main/delivery', [MainController::class, 'delivery'])->name('basic.main.delivery');
 Route::get('basic/subcategory/index/{id?}', [SubcategoryViewController::class, 'index'])->name('basic.subcategory.index');
 Route::get('basic/productAll/index/{id?}', [ProductAllController::class, 'index'])->name('basic.productAll.index');
-Route::get('basic/productAll/index/{id?}', [ProductFilterMainController::class, 'index'])->name('basic.productAll.index');
+Route::get('basic/productFilter/index', [ProductFilterMainController::class, 'index'])->name('basic.productFilter.index');
 Route::get('basic/productOne/index/{id?}', [ProductOneController::class, 'index'])->name('basic.productOne.index');
 Route::post('ajaxRequest', [AjaxController::class, 'filter'])->name('ajaxRequest.post');

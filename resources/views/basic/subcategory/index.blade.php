@@ -27,22 +27,27 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item"><a href="{{ route('basic.main.delivery') }}" class="cart"><span class="ti-truck"></span></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
                             <li class="nav-item">
-                                <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+                                <div class="common-filter">
+                                    <form action="{{ route('basic.productFilter.index') }}">
+                                        <div class="input-group">
+                                            <input name="search_field" type="text" class="form-control form-control"
+                                                   placeholder="Поиск товара">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-md btn-default">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-        </div>
-        <div class="search_field" id="search_input_box">
-            <div class="container">
-                <form action="{{ route('basic.productAll.index') }}" class="d-flex justify-content-between">
-                    <input type="text" class="form-control" id="search_field" name="search_field" placeholder="Поиск товара">
-                    <button type="submit" class="btn"></button>
-                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-                </form>
-            </div>
         </div>
     </header>
     <!-- End Header Area -->

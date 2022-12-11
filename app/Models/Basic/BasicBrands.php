@@ -12,13 +12,11 @@ class BasicBrands extends Model
 
     const TYPE_BRAND = 1;
     const TYPE_ONE = 2;
-    const TYPE_CUSTOM = 3;
 
     public static function getBasicFiles() {
         return [
             self::TYPE_BRAND => 'basic.main.content.brand',
             self::TYPE_ONE => 'basic.main.content.one',
-            self::TYPE_CUSTOM => 'basic.main.content.custom'
         ];
     }
 
@@ -26,7 +24,6 @@ class BasicBrands extends Model
         return [
             self::TYPE_BRAND => 'Создать темплейт для бренда',
             self::TYPE_ONE => 'Создать темплейт для одного товара',
-            self::TYPE_CUSTOM => 'Создать кастомный темплейт'
         ];
     }
 
