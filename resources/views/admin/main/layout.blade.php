@@ -103,12 +103,18 @@
                                 <p>Характеристики</p>
                             </a>
                         </li>
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="#" class="nav-link">--}}
-{{--                                <i class="nav-icon fa fa-bullhorn"></i>--}}
-{{--                                <p>Контент гл.страницы</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        <li class="nav-item">
+                            <a href="{{ route('admin.user.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-users"></i>
+                                <p>Пользователи</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.mainContent.index') }}" class="nav-link">
+                                <i class="nav-icon fa fa-bullhorn"></i>
+                                <p>Контент</p>
+                            </a>
+                        </li>
 {{--                        <li class="nav-item">--}}
 {{--                            <a href="{{ route('admin.analysis.index') }}" class="nav-link">--}}
 {{--                                <i class="nav-icon fa fa-chart-line"></i>--}}

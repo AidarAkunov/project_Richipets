@@ -15,11 +15,10 @@ class MainController extends Controller
     {
         $category = Category::all();
         $slider = Slider::all();
-        $popular = Product::orderBy('count', 'desc')->get();
-        $cheap = Product::orderBy('price', 'asc')->get();
+        $cheap = Product::orderBy('price', 'asc')->limit(4)->get();
         $basicBrands = BasicBrands::all();
 
-        return view('basic.main.index', compact('category', 'basicBrands', 'slider', 'popular', 'cheap'));
+        return view('basic.main.index', compact('category', 'basicBrands', 'slider', 'cheap'));
     }
 
     public function delivery()

@@ -142,7 +142,7 @@ use App\Models\Basic\BasicBrands;
     <section>
         <div class="container">
             <div class="row col-lg-12">
-                @foreach($cheap->slice(0, 4) as $row)
+                @foreach($cheap as $row)
                     <div class="col-lg-3 col-md-6">
                         <div class="single-product">
                             <a href="{{ route('basic.productOne.index', $row->id) }}">
@@ -157,7 +157,12 @@ use App\Models\Basic\BasicBrands;
                                     <h6>{{ $row->name }}</h6>
                                     <div class="price">
                                         <h6 class="fw-bold"> Цена:</h6>
-                                        <h6> {{ $row->price }}</h6>
+                                        @if($row->new_price != null)
+                                            <h6 class="l-through">{{ $row->price }}</h6>
+                                            <h6>{{ $row->new_price }}</h6>
+                                        @else
+                                            <h6>{{ $row->price }}</h6>
+                                        @endif
                                     </div>
                                     <div class="prd-bottom">
                                         <a href="https://wa.me/996550990770" class="social-info">
@@ -174,12 +179,11 @@ use App\Models\Basic\BasicBrands;
         </div>
     </section>
 
-
     @foreach ($basicBrands as $row)
         @if ($row->type == BasicBrands::TYPE_BRAND)
-            @include(BasicBrands::getBasicFiles()[$row->type], ['data' => Brand::find($row->brand_id)]);
+            @include(BasicBrands::getBasicFiles()[$row->type], ['data' => Product::where(['brand_id' => $row->brand_id])->limit(4)->get(), 'content' => $row]);
         @elseif ($row->type == BasicBrands::TYPE_ONE)
-            @include(BasicBrands::getBasicFiles()[$row->type], ['data' => Product::find($row->product_id)]);
+            @include(BasicBrands::getBasicFiles()[$row->type], ['data' => Product::find($row->product_id), 'content' => $row]);
         @endif
     @endforeach
 

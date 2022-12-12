@@ -77,9 +77,15 @@
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1">
-                        <div class="s_product_text">
-                            <h3>{{ $productOne->name }}</h3>
-                            <h2>{{ $productOne->price }}</h2>
+                        <div>
+                            <h3>{{ $productOne->name }}</h3><br>
+                            <h3 class="fw-bold">Цена: </h3>
+                            @if($productOne->new_price != null)
+                                <h4 style="text-decoration: line-through">{{ $productOne->price }}</h4>
+                                <h4>{{ $productOne->new_price }}</h4>
+                            @else
+                                <h4>{{ $productOne->price }}</h4>
+                            @endif
                             <p>{{ $productOne->description }}</p>
                             <p class="fw-bold">В наличии: {{ $productOne->count }} шт.</p>
                             <div class="card_area d-flex align-items-center">

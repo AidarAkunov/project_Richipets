@@ -37,7 +37,13 @@
                     <h6>{{ $row->name }}</h6>
                 </div>
                 <div class="price">
-                    <h6>Цена: {{ $row->price }}</h6>
+                    <h6 class="fw-bold"> Цена:</h6>
+                    @if($row->new_price != null)
+                        <h6 class="l-through">{{ $row->price }}</h6>
+                        <h6>{{ $row->new_price }}</h6>
+                    @else
+                        <h6>{{ $row->price }}</h6>
+                    @endif
                 </div>
                 <div class="prd-bottom">
                     <a href="https://wa.me/996550990770" class="social-info">

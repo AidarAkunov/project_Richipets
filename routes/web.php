@@ -12,6 +12,10 @@ use App\Http\Controllers\Admin\VetServiceController;
 use App\Http\Controllers\Admin\AnalysisController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyValueController;
+use App\Http\Controllers\Admin\UserController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\BasicbrandController;
+use App\Http\Controllers\Admin\BasicProductController;
 
 use App\Http\Controllers\Basic\AjaxController;
 use App\Http\Controllers\Basic\MainController;
@@ -33,16 +37,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 ///--------ADMIN--------///
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/main/index', [AdminController::class, 'index'])->name('admin.main.index');
-Route::get('admin/main/index', [AdminController::class, 'show'])->name('admin.main.index');
 Route::get('admin/product/index', [ProductFilterController::class, 'index'])->name('admin.product.index');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/user/index', [UserController::class, 'index'])->name('admin.user.index');
+Route::get('admin/user/create', [UserController::class, 'create'])->name('admin.user.create');
+Route::post('admin/user/create', [UserController::class, 'store'])->name('admin.user.store');
+Route::get('admin/user/edit/{id}', [UserController::class, 'edit'])->name('admin.user.edit');
+Route::post('admin/user/update/{id}', [UserController::class, 'update'])->name('admin.user.update');
+Route::get('admin/user/destroy/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('admin/category/index', [CategoryController::class, 'index'])->name('admin.category.index');
@@ -124,8 +131,17 @@ Route::get('admin/property/propertyValue/destroy/{id}', [PropertyValueController
 Route::get('admin/property/propertyValue/edit/{id}', [PropertyValueController::class, 'edit'])->name('admin.property.propertyValue.edit');
 Route::post('admin/property/propertyValue/update/{id}', [PropertyValueController::class, 'update'])->name('admin.property.propertyValue.update');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('admin/mainContent/index', [BasicProductController::class, 'index'])->name('admin.mainContent.index');
+Route::post('admin/mainContent/update/{id}', [BasicProductController::class, 'update'])->name('admin.mainContent.update');
+Route::get('admin/mainContent/createProduct', [BasicProductController::class, 'createProduct'])->name('admin.mainContent.createProduct');
+Route::get('admin/mainContent/createBrand', [BasicProductController::class, 'createBrand'])->name('admin.mainContent.createBrand');
+Route::get('admin/mainContent/editProduct/{id}', [BasicProductController::class, 'editProduct'])->name('admin.mainContent.editProduct');
+Route::get('admin/mainContent/editBrand/{id}', [BasicProductController::class, 'editBrand'])->name('admin.mainContent.editBrand');
 
-///--------BASIC--------///
+Route::post('admin/mainContent/store', [BasicProductController::class, 'store'])->name('admin.mainContent.store');
+Route::get('admin/mainContent/destroy/{id}', [BasicProductController::class, 'destroy'])->name('admin.mainContent.destroy');
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Route::get('basic/main/index', [MainController::class, 'index'])->name('basic.main.index');
@@ -135,3 +151,12 @@ Route::get('basic/productAll/index/{id?}', [ProductAllController::class, 'index'
 Route::get('basic/productFilter/index', [ProductFilterMainController::class, 'index'])->name('basic.productFilter.index');
 Route::get('basic/productOne/index/{id?}', [ProductOneController::class, 'index'])->name('basic.productOne.index');
 Route::post('ajaxRequest', [AjaxController::class, 'filter'])->name('ajaxRequest.post');
+
+
+Auth::routes();
+
+Route::get('/', [MainController::class, 'index'])->name('home');
+
+Route::middleware(['admin'])->group(function() {
+     Route::get('admin/main/index', [AdminController::class, 'index'])->name('admin.main.index');
+ });

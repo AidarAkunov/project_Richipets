@@ -19,7 +19,7 @@ class CategoryController extends Controller{
 
     public function store(Request $request){
         $data = $request->validate([
-            'name' => 'string',
+            'name' => 'required|string',
         ]);
         Category::create($data);
         return redirect(route('admin.category.index'));
@@ -32,7 +32,7 @@ class CategoryController extends Controller{
 
     public function update(Request $request, $id){
         $data = $request->validate([
-            'name' => 'string',
+            'name' => 'required|string',
         ]);
 
         $category = Category::find($id);

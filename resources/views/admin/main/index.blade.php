@@ -9,8 +9,14 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-12">
+                    <div class="col-sm-11">
                         <h1 class="m-0 fw-bold text-center">Административная панель</h1>
+                    </div>
+                    <div class="col-sm-1">
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <input class="btn btn-outline-primary" type="submit" value="Выйти">
+                        </form>
                     </div>
                 </div>
             </div>

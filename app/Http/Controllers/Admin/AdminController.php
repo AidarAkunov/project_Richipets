@@ -11,15 +11,12 @@ use App\Models\Admin\Subcategory;
 class AdminController extends Controller
 {
     public function index() {
-        return view('admin.main.index');
-    }
-
-    public function show() {
         $data = [];
-        $data ['categoryCount'] = Category::all()->count();
-        $data ['subcategoryCount'] = Subcategory::all()->count();
-        $data ['brandCount'] = Brand::all()->count();
-        $data ['productCount'] = Product::all()->count();
+        $data['categoryCount'] = Category::all()->count();
+        $data['subcategoryCount'] = Subcategory::all()->count();
+        $data['brandCount'] = Brand::all()->count();
+        $data['productCount'] = Product::all()->count();
+
         return view('admin.main.index', compact('data'));
     }
 }

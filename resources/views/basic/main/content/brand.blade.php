@@ -1,20 +1,16 @@
-{{--    Популярные товары--}}
-<div class="row col-lg-12 col-md-6 m-5">
-    <div>
-        <h2 class="text-lg-center text-warning">Популярные товары</h2>
-    </div>
-</div>
+
+        <h2 class="text-lg-center text-warning">{{ $content->name }}</h2>
 <section class="mb-5">
     <div class="container">
         <div class="row col-lg-12">
-            @foreach($popular->slice(0, 4) as $row)
+            @foreach($data as $row)
                 <div class="col-lg-3 col-md-6">
                     <div class="single-product">
                         <a href="{{ route('basic.productOne.index', $row->id) }}">
                             <div class="s_Product_carousel">
-                                @foreach($row->image as $images)
+                                @foreach($row->image as $brand)
                                     <div class="single-prd-item">
-                                        <img class="img-fluid" src="{{ asset('storage/' . $images->image) }}" alt="image">
+                                        <img class="img-fluid" src="{{ asset('storage/' . $brand->image) }}" alt="image">
                                     </div>
                                 @endforeach
                             </div>
